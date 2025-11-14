@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Créditos Sprites - UW</title>
+    <link rel="stylesheet" href="style.css">
+     <link rel="icon" type="image/x-icon" href="icon.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1><i class="fas fa-dragon"></i> UltimateWarriors Credits</h1>
+                <p>Sprite Artists Gallery</p>
+            </div>
+            <div class="search-box">
+                <input type="text" class="search-input" id="searchInput" placeholder="Buscar personaje...">
+            </div>
+            <div class="char-list" id="charList"></div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <div class="top-bar">
+                <h2 id="currentCharName">Select a character</h2>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+            <div id="spritesContainer">
+                <div class="empty-state">
+                    <i class="fas fa-hand-pointer"></i>
+                    <h3>Select a character from the side menu</h3>
+                    <p class="credits-thanks">Thanks to all the artists who dedicated their effort to creating complete sprite sheets</p>
+                    <p class="credits-note">To maintain visual consistency across sprites from different artists, some had their color palettes retouched, others had their designs adjusted based on existing models, or were edited to preserve a uniform aesthetic and composition.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // CONFIGURACIÓN DE CRÉDITOS CON MÚLTIPLES ARTISTAS
+        const CREDITS = {
+            "Goku": {
+                "normal": [["Frankspriter","https://www.deviantart.com/frankspriter/art/Goku-DBS-Broly-intro-1138638451"],["2ruffles", "https://www.deviantart.com/2ruffles/art/DBZ-Goku-UltimateLSW-Sprite-Sheet-by-2ruffles-846990003"]],
+                "ssj": [["Strice12", "https://www.deviantart.com/strice12/art/Goku-ssj1-and-Goku-ssj2-sheet-sprite-ulsw-1.081254542e+09"], ["PeculiarDoc", "https://www.deviantart.com/peculiardoc/art/Super-Saiyan-Goku-Ultimate-LSW-Sheet-708920993"]],
+                "ssj2": [["breckhhh", "https://www.deviantart.com/breckhhh/art/SSJ2-Goku-Ulsw-Sprite-Sheet-927637301"]],
+                "ssj3": [["SonGoku0911", "https://www.deviantart.com/songoku0911/art/Super-Saiyan-3-Goku-ULSW-Sprite-Sheet-818678157"]],
+                "god": [["PeculiarDoc", "https://www.deviantart.com/peculiardoc/art/Super-Saiyan-God-Goku-Ultimate-LSW-Sheet-710318759"]],
+                "blue": [["scarlettdancer2627", "https://www.deviantart.com/scarlettdancer2627"], ["PeculiarDoc" ,"https://www.deviantart.com/peculiardoc/art/Super-Saiyan-Blue-Goku-Ultimate-LSW-Sheet-708921594"]],
+                "ui": [["JGgames14pro", "https://www.deviantart.com/jggames14pro/art/Goku-True-Ultra-Instinct-DBS-Manga-Ulsw-sheet-958390547"]],
+                "mui": [["ErickJCrack507", "https://www.deviantart.com/erickjcrack507/art/Goku-Ultra-Instinto-ULSW-Manga-Sprite-Sheet-912375730"]]
+            },
+            "Vegeta": {
+                "normal": [["qsab101", "https://www.deviantart.com/qsab101/art/Vegeta-Ultimate-LSW-Sheet-725170073"]],
+                "ssj": [["SonGoku0911", "https://www.deviantart.com/songoku0911/art/Super-Saiyan-Vegeta-DBS-Broly-ULSW-Sprite-Sheet-844761827"]],
+                "ssj2": [["xBae12", "https://www.deviantart.com/xbae12/art/Super-Saiyan-2-Vegeta-Ultimate-LSW-Sheet-759913529"]],
+                "god": [["SonGoku0911", "https://www.deviantart.com/songoku0911/art/Super-Saiyan-God-Vegeta-ULSW-Sprite-Sheet-840205582"]],
+                "blue": [["PeculiarDoc", "https://www.deviantart.com/peculiardoc/art/Super-Saiyan-Blue-Vegeta-Ultimate-LSW-Sheet-748704163"]],
+                "blue_ev": [["SonGoku0911", "https://www.deviantart.com/songoku0911/art/Super-Saiyan-Blue-Evolution-Vegeta-Sheet-ULSW-789211217"]],
+                "ue": [["SonGoku0911", "https://www.deviantart.com/songoku0911/art/Ultra-Ego-Vegeta-Sprite-Sheet-901292672"]]
+            },
+            "Gohan": {
+                "base": [["JGgames14pro", "https://www.deviantart.com/jggames14pro/art/Gohan-Base-DBS-SH-Ulsw-sheet-926067690"]],
+                "ssj": [["JGgames14pro", "https://www.deviantart.com/jggames14pro/art/Gohan-SSJ-DBS-SH-Ulsw-sheet-927095935"]],
+                "ultimate": [["ErickJCrack507", "https://www.deviantart.com/erickjcrack507/art/Gohan-Definitivo-DBS-SH-ULSW-Mini-Hoja-921090368"]],
+                "beast": [["JGgames14pro", "https://www.deviantart.com/jggames14pro/art/Gohan-Bestial-DBS-SH-Ulsw-sheet-933640626"]]
+            },
+            "Cooler": {
+                "base": [["Strice12", "https://www.deviantart.com/strice12/art/Cooler-4-forma-sheet-sprite-ulsw-1180939036"]],
+                "final": [["arisrad", "https://www.deviantart.com/arisrad/art/Cooler-final-form-sprite-sheet-ulsw-805914906"]]
+            },
+            "Bardock": {
+                "base": [["Strice12", "https://www.deviantart.com/strice12/art/Bardock-dbz-sheet-sprite-ulsw-1116162705"], ["arisrad", "https://www.deviantart.com/arisrad/art/Bardock-sprite-sheet-814394383"]],
+                "ssj": [["SonGoku0911", "https://www.deviantart.com/songoku0911/art/Super-Saiyan-Bardock-ULSW-Sprite-Sheet-956079615"]]
+            },
+            "Cell": {
+                "perfect": [["Strice12", "https://www.deviantart.com/strice12/art/Cell-perfecto-and-super-perfecto-sheet-sprite-ulsw-1051526757"]]
+            },
+            "Freezer": {
+                "normal": [["GaminXArchie", "https://www.deviantart.com/gaminxarchie/art/Freezer-Final-form-Sprite-Sheet-ULSW-990720911"]],
+                "golden": [["Nightmarex07", "https://www.deviantart.com/nightmarex07/art/Golden-Frieza-ULSW-899465176"]],
+                "black": [["ErickJCrack507", "https://www.deviantart.com/erickjcrack507/art/Black-freezer-ULSW-Mini-Hoja-926410554"]]
+            },
+            "Broly": {
+                "rage": [["BlackSanYT", "https://www.deviantart.com/blacksanyt/art/Ikari-Broly-SwlPlus-Sprite-Sheet-1025381597"]],
+                "ssj": [["JustOruma", "https://www.deviantart.com/justoruma/art/Broly-ssj-SWL-sprite-sheet-796771834"]],
+                "ssfp": [["JustOruma", "https://www.deviantart.com/justoruma/art/Broly-Full-Power-SWL-Sprite-Sheet-811840836"]]
+            },
+            "Black": {
+                "normal": [["Omegasuper", "https://www.deviantart.com/omegasuper/art/Black-Goku-ULSW-799497391"]],
+                "rose": [["AldetSkywalker", "https://www.deviantart.com/aldetskywalker/art/SsRose-Goku-Black-Ultimate-Lsw-Sheet-842527115"]]
+            },
+            "Piccolo": {
+                "Base": [["JeffSonYT", "https://www.deviantart.com/jeffsonyt/art/Ultimate-Piccolo-Ulsw-Extended-Sheet-1030904649"]],
+                "Super": [["JeffSonYT", "https://www.deviantart.com/jeffsonyt/art/Ultimate-Piccolo-Ulsw-Extended-Sheet-1030904649"]],
+                "Orange": [["MatheusAnimaa", "https://www.deviantart.com/matheusanimaa/art/Orange-Piccolo-SWL-sprite-sheet-1185984785"]]
+            },
+            "Trunks": {
+                "base": [["Dryy7", "https://www.deviantart.com/dryy7/art/Trunks-Future-Base-Ssj-Ssj2-Sprite-Sheet-ULSW-943430724"]],
+                "ssj": [["Dryy7", "https://www.deviantart.com/dryy7/art/Trunks-Future-Base-Ssj-Ssj2-Sprite-Sheet-ULSW-943430724"]],
+                "ssj2": [["Dryy7", "https://www.deviantart.com/dryy7/art/Trunks-Future-Base-Ssj-Ssj2-Sprite-Sheet-ULSW-943430724"]]
+            },
+            "Android17":{
+                "base": [["BlackSanYT", "https://www.deviantart.com/blacksanyt/art/SwlPlus-Android-17-Sprite-Sheet-1101697933"]]
+            },
+            "Android18":{
+                "base": [["BlackSanYT", "https://www.deviantart.com/blacksanyt/art/SwlPlus-Android-18-Sprite-Sheet-1082475061"]]
+            },
+            "Android21":{
+                "base": [["arisrad", "https://www.deviantart.com/arisrad/art/android-21-swl-sprite-sheet-by-ARIS-RAD-1131494602"]]
+            },
+            "Beerus":{
+                "base": [["arisrad", "https://www.deviantart.com/arisrad/art/Beerus-Sprite-sheet-929112069"]]
+            },
+            "Gogeta":{
+                "blue": [["SonGoku0911", "https://www.deviantart.com/songoku0911/art/Super-Saiyan-Blue-Gogeta-ULSW-Sprite-Sheet-799656292"]]
+            },
+            "Gotenks":{
+                "ssj3": [["SocramDev", "https://www.deviantart.com/socramdev/art/Gotenks-Ssj3-Remeke-997183796"]]
+            },
+            "Granola":{
+                "base": [["AThePro013", "https://www.deviantart.com/athepro013/art/Granola-sprite-Sheet-Swl-979282045"]]
+            },
+            "Hit":{
+                "base": [["thekrillmaster", "https://www.deviantart.com/thekrillmaster/art/Hit-sprite-sheet-757600651"]]
+            },
+            "Janemba":{
+                "base": [["arisrad", "https://www.deviantart.com/arisrad/art/Janemba-full-sprite-sheet-by-aris-rad-995427046"]]
+            },
+            "Jiren":{
+                "normal": [["thekrillmaster", "https://www.deviantart.com/thekrillmaster/art/Jiren-sprite-sheet-757600666"]],
+                "FullPower": [["TheSaiyanOfNamekZ", "https://www.deviantart.com/thesaiyanofnamekz/art/SWL-Jiren-Full-Power-Sprite-Sheet-938527153"]]
+            },
+            "Kefla":{
+                "lssj": [["Tashi12", "https://www.deviantart.com/tashi12/art/Kefla-SWL-pose-987641597"], ["P3rricr4ft","https://www.deviantart.com/p3rricr4ft/art/Kefla-Ssj-Swlplus-Basic-Sheet-1001156198"]]
+            },
+            "KidBuu":{
+                "base": [["KauanPereba", "https://www.deviantart.com/kauanpereba/art/Kid-Buu-Sprite-Sheet-ULSW-954133460"]]
+            },
+            "KidGohan":{
+                "ssj2": [["DyanDisel", "https://www.deviantart.com/dyandisel/art/Gohan-SSJ2-UlSW-785073781"]]
+            },
+            "Moro":{
+                "base": [["JustOruma", "https://www.deviantart.com/justoruma/art/Moro-sprite-sheet-SWL-PLUS-939504379"]]
+            },
+            "SuperBuuGohan":{
+                "base": [["scarlettdancer2627", "https://www.deviantart.com/scarlettdancer2627"], ["Dryy7", "https://www.deviantart.com/dryy7/art/Super-Buu-Gohan-Sprite-Sheet-ULSW-940012746"]]
+            },
+            "Vegetto":{
+                "blue": [["Ningensprites", "https://www.deviantart.com/ningensprites/art/Vegetto-Blue-Sprite-Sheet-901541221"]]
+            },
+            "Videl":{
+                "base": [["MrDryy", "https://www.deviantart.com/mrdryy/art/Videl-Short-Hair-Mini-Sheet-ULSW-1092487887"]]
+            },
+            "Zamasu":{
+                "base": [["breckhhh", "https://www.deviantart.com/breckhhh/art/Zamasu-no-gattai-ulsw-sprite-sheet-895182187"]],
+                "Corrupted": [["breckhhh", "https://www.deviantart.com/breckhhh/art/Zamasu-no-gattai-ulsw-sprite-sheet-895182187"]]
+            }
+        };
+
+        // FUNCIÓN PARA OBTENER PERSONAJES ORDENADOS ALFABÉTICAMENTE
+        function getSortedCharacters() {
+            return Object.keys(CREDITS).sort((a, b) => {
+                return a.toLowerCase().localeCompare(b.toLowerCase());
+            });
+        }
+
+        // FUNCIONES
+        function initializeSidebar() {
+            const charList = document.getElementById('charList');
+            let html = '';
+            // Usar la función de ordenamiento alfabético
+            const sortedCharacters = getSortedCharacters();
+            
+            for (const charName of sortedCharacters) {
+                const displayName = charName.replace(/([A-Z])/g, ' $1').trim();
+                html += `<div class="char-item" onclick="showCharacter('${charName}')">
+                            <i class="fas fa-user-ninja"></i>
+                            <span>${displayName}</span>
+                        </div>`;
+            }
+            charList.innerHTML = html;
+        }
+
+        function showCharacter(charName) {
+            // Actualizar título
+            document.getElementById('currentCharName').textContent = charName.replace(/([A-Z])/g, ' $1').trim();
+            
+            // Actualizar activo en sidebar
+            document.querySelectorAll('.char-item').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            // Generar sprites
+            const container = document.getElementById('spritesContainer');
+            const forms = CREDITS[charName];
+            let html = '<div class="sprite-grid">';
+            
+            for (const [formFolder, artistsArray] of Object.entries(forms)) {
+                const imgPathStand = `../chars/${charName}/${formFolder}/stand.png`;
+                const imgPathStand1 = `../chars/${charName}/${formFolder}/stand_1.png`;
+                const formName = formFolder.charAt(0).toUpperCase() + formFolder.slice(1);
+                const imgId = `img-${charName}-${formFolder}`;
+                
+                html += `
+                    <div class="sprite-card">
+                        <div class="sprite-img-container" id="container-${imgId}">
+                            <img src="${imgPathStand}" alt="${formName}" class="sprite-img" id="${imgId}" 
+                                 onload="adjustSpriteSize('${imgId}')" 
+                                 onerror="this.src='${imgPathStand1}'; this.onerror=null;">
+                        </div>
+                        <div class="sprite-name">${formName}</div>
+                        <div class="sprite-credits">
+                            ${artistsArray.map(([artist]) => artist).join(' & ')}
+                        </div>
+                        <div class="sprite-links">`;
+                
+                // Generar un botón por cada artista
+                for (const [artist, link] of artistsArray) {
+                    if (link) {
+                        html += `<a href="${link}" class="btn-link" target="_blank">
+                                    <i class="fab fa-deviantart"></i> ${artist}
+                                 </a>`;
+                    }
+                }
+                
+                html += `</div></div>`;
+            }
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        // Ajusta sprites para contenedores cuadrados
+        function adjustSpriteSize(imgId) {
+            const img = document.getElementById(imgId);
+            const container = document.getElementById(`container-${imgId}`);
+            
+            if (!img || !img.complete || img.naturalWidth === 0 || !container) {
+                console.warn('Imagen no lista:', imgId);
+                return;
+            }
+
+            try {
+                // Crear canvas invisible
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d', { willReadFrequently: true });
+                const w = img.naturalWidth;
+                const h = img.naturalHeight;
+                canvas.width = w;
+                canvas.height = h;
+                ctx.drawImage(img, 0, 0);
+
+                // Detectar bordes con contenido visible
+                const imageData = ctx.getImageData(0, 0, w, h);
+                const data = imageData.data;
+                let minX = w, minY = h, maxX = 0, maxY = 0;
+                let hasContent = false;
+
+                for (let y = 0; y < h; y++) {
+                    for (let x = 0; x < w; x++) {
+                        const alpha = data[(y * w + x) * 4 + 3];
+                        if (alpha > 10) {
+                            hasContent = true;
+                            if (x < minX) minX = x;
+                            if (x > maxX) maxX = x;
+                            if (y < minY) minY = y;
+                            if (y > maxY) maxY = y;
+                        }
+                    }
+                }
+
+                if (!hasContent || maxX === minX || maxY === minY) {
+                    console.warn('Sin contenido visible:', imgId);
+                    img.style.maxWidth = '85%';
+                    img.style.maxHeight = '85%';
+                    img.style.position = 'relative';
+                    img.classList.add('loaded');
+                    return;
+                }
+
+                // Dimensiones del contenido visible
+                const contentWidth = maxX - minX + 1;
+                const contentHeight = maxY - minY + 1;
+
+                // Obtener tamaño real del contenedor cuadrado
+                const containerWidth = container.offsetWidth;
+                const maxSize = containerWidth * 0.85; // 85% del contenedor
+
+                // Escala para llenar bien el contenedor cuadrado
+                const scale = Math.min(maxSize / contentWidth, maxSize / contentHeight);
+
+                // Dimensiones finales
+                const scaledWidth = w * scale;
+                const scaledHeight = h * scale;
+
+                // Centro del contenido
+                const contentCenterX = (minX + maxX) / 2;
+                const contentCenterY = (minY + maxY) / 2;
+
+                // Desplazamiento
+                const offsetX = (contentCenterX - w / 2) * scale;
+                const offsetY = (contentCenterY - h / 2) * scale;
+
+                // Aplicar estilos
+                img.style.width = `${scaledWidth}px`;
+                img.style.height = `${scaledHeight}px`;
+                img.style.left = `calc(50% - ${offsetX}px)`;
+                img.style.top = `calc(50% - ${offsetY}px)`;
+                img.style.transform = 'translate(-50%, -50%)';
+                img.classList.add('loaded');
+
+            } catch (error) {
+                console.error('Error procesando:', imgId, error);
+                img.style.maxWidth = '85%';
+                img.style.maxHeight = '85%';
+                img.style.position = 'relative';
+                img.classList.add('loaded');
+            }
+        }
+
+        // Buscador
+        document.addEventListener('DOMContentLoaded', initializeSidebar);
+        
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            document.querySelectorAll('.char-item').forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(query) ? 'flex' : 'none';
+            });
+        });
+
+        // Tema
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            const currentTheme = html.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                html.removeAttribute('data-theme');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Cargar tema
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                document.getElementById('themeIcon').className = 'fas fa-sun';
+            }
+        });
+    </script>
+</body>
+</html>

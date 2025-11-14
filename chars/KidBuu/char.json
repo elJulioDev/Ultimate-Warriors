@@ -1,0 +1,19 @@
+{    
+    "folder": "KidBuu",
+	"base": "base",
+    "name": "Kid Buu",
+    "statistics": {
+        "speed": 450,
+        "life": 130,
+        "damaged": 110,
+        "defence": 18,
+        "Attack Speed": 7,
+        "Stand Speed": 15
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "fastCharge",
+		"slot 3": "fixK",
+        "slot 4": "RecoverLife=1"
+	}
+}

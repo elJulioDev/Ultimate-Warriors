@@ -1,0 +1,23 @@
+{    
+    "folder": "Bardock",
+	"base": "base",
+    "name": "Bardock",
+    "statistics": {
+        "speed": 400,
+        "life": 100,
+        "damaged": 93,
+		"defence": 14,
+        "Attack Speed": 7
+    },
+    "transformation": {
+        "eneable": true,
+        "phase 1": "ssj"
+    },
+    "transformation color":{
+        "eneable": true,
+        "phase 1":{"color": "#ffff00", "radio": 4, "transparecy": 75}
+    },
+	"cheats":{
+		"slot 1": "teleport"
+	}
+}

@@ -1,0 +1,31 @@
+{    
+    "folder": "Zamasu",
+	"base": "base",
+    "name": "Zamasu (Fusion)",
+    "statistics": {
+        "speed": 500,
+        "life": 150,
+        "damaged": 120,
+        "defence": 18,
+        "Attack Speed": 7
+    },
+    "base color":{
+        "eneable": true, "color": "#F1C6F4", "radio": 4, "transparecy": 75
+    },
+    "transformation": {
+        "eneable": true, "phase 1": "corrupted"
+    },
+    "transformation color":{
+        "eneable": true,
+        "phase 1":{"color": "#F1C6F4", "radio": 3, "transparecy": 65}
+    },
+    "Char Effects":{
+        "Phase 1": {"eneable": true, "effect": "purple", "speed": 0.12, "transparecy": 80}
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "fastCharge",
+        "slot 3": "updim=phase:1",
+        "slot 4": "noformback"
+	}
+}

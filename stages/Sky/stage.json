@@ -1,0 +1,9 @@
+{    
+    "folder": "Sky",
+    "name": "Cielo",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": false
+    }
+}

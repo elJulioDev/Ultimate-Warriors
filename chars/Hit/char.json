@@ -1,0 +1,16 @@
+{    
+    "folder": "Hit",
+	"base": "base",
+    "name": "Hit",
+    "statistics": {
+        "speed": 450,
+        "life": 130,
+        "damaged": 110, 
+        "defence": 17,
+        "Attack Speed": 7.5
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "TimeJump"
+	}
+}

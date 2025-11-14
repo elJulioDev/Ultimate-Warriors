@@ -1,0 +1,9 @@
+{    
+    "folder": "Glacier",
+    "name": "Glaciar",
+    "settings": {
+        "filter": true,
+        "color": "#0050b2",
+		"shadow": true
+    }
+}

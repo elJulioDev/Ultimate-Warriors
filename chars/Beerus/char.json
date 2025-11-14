@@ -1,0 +1,19 @@
+{    
+    "folder": "Beerus",
+	"base": "base",
+    "name": "Beerus",
+    "statistics": {
+        "speed": 500,
+        "life": 150,
+        "damaged": 135,
+        "defence": 20,
+        "Attack Speed": 6,
+        "Stand Speed": 12,
+        "Taunt Speed": 10
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "fastCharge",
+        "slot 3": "Accuracy"
+	}
+}

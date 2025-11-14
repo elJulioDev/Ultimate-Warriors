@@ -1,0 +1,29 @@
+{    
+    "folder": "Piccolo",
+	"base": "base",
+    "name": "Piccolo",
+    "statistics": {
+        "speed": 400,
+        "life": 100,
+        "damaged": 95,
+        "defence": 15
+    },
+    "transformation": {
+        "eneable": true,
+        "phase 4": "super",
+        "phase 7": "orange"
+    },
+    "transformation color":{
+        "eneable": true,
+        "phase 4":{"color": "#ffff00", "radio": 5, "transparecy": 60},
+        "phase 7":{"color": "#FFBD00", "radio": 5, "transparecy": 60}
+    },
+    "Char Effects":{
+        "Phase 4": {"eneable": true, "effect": "yellow", "speed": 0.08, "transparecy": 85},
+        "Phase 7": {"eneable": true, "effect": "orange", "speed": 0.08, "transparecy": 70}
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "updim=phase:7"
+	}
+}

@@ -1,0 +1,396 @@
+{
+    "Language": {
+        "1": {
+            "Spanish": "No se pudo iniciar el juego!",
+            "English": "Could not start the game!"
+        },
+        "2": {
+            "Spanish": "Las macros parecen estar deshabilitadas, el juego funciona en su totalidad por estas, para activarlas ve a propiedades del archivo 'dbxw' y activa la casilla 'desbloquear' en la parte inferior, luego de realizar esta opcion tendras acceso a las macros y poder ejecutar el juego.",
+            "English": "The macros seem to be disabled, the game works entirely because of them, to activate them go to the properties of the 'dbxw' file and activate the 'unlock' box at the bottom, after making this option you will have access to the macros and be able to execute the game."
+        },
+        "3": {
+            "Spanish": "Salir",
+            "English": "Exit"
+        },
+        "4": {
+            "Spanish": "Juego local",
+            "English": "Local Game"
+        },
+        "5": {
+            "Spanish": "Creditos",
+            "English": "Credits"
+        },
+        "6": {
+            "Spanish": "Configuraciones",
+            "English": "Settings"
+        },
+        "7": {
+            "Spanish": "Salir del juego",
+            "English": "Exit game"
+        },
+        "8": {
+            "Spanish": "Rendimiento",
+            "English": "Performance"
+        },
+        "9": {
+            "Spanish": "Efectos de carga",
+            "English": "Loading effects"
+        },
+        "10": {
+            "Spanish": "Limitar animaciones",
+            "English": "Limit animations"
+        },
+        "11": {
+            "Spanish": "Movimiento en escenario",
+            "English": "Movement in stage"
+        },
+        "12": {
+            "Spanish": "Fondos en baja calidad",
+            "English": "Low quality backgrounds"
+        },
+        "13": {
+            "Spanish": "Sonido",
+            "English": "Sound"
+        },
+        "14": {
+            "Spanish": "Efectos al cargar",
+            "English": "Effects on charge"
+        },
+        "15": {
+            "Spanish": "Musica en Menu",
+            "English": "Menu Music"
+        },
+        "16": {
+            "Spanish": "Sonidos en cinematicas",
+            "English": "Sounds in cinematics"
+        },
+        "17": {
+            "Spanish": "Musica en juego",
+            "English": "Music in gameplay"
+        },
+        "18": {
+            "Spanish": "Juego",
+            "English": "Game"
+        },
+        "19": {
+            "Spanish": "Tiempo de juego",
+            "English": "Game time"
+        },
+        "20": {
+            "Spanish": "Ver controles",
+            "English": "See controls"
+        },
+        "21": {
+            "Spanish": "Lenguaje",
+            "English": "Language"
+        },
+        "22": {
+            "Spanish": "Volver",
+            "English": "Back"
+        },
+        "23": {
+            "Spanish": "Selecciona dos personajes para continuar",
+            "English": "Select two characters to continue"
+        },
+        "24": {
+            "Spanish": "Continuar",
+            "English": "Continue"
+        },
+        "25": {
+            "Spanish": "Volver",
+            "English": "Back"
+        },
+        "26": {
+            "Spanish": "Deseleccionar",
+            "English": "Deselect"
+        },
+        "27": {
+            "Spanish": "Verificar",
+            "English": "Verify"
+        },
+        "28": {
+            "Spanish": "J1",
+            "English": "P1"
+        },
+        "29": {
+            "Spanish": "J2",
+            "English": "P2"
+        },
+        "30": {
+            "Spanish": "Selecciona un escenario para continuar",
+            "English": "Select a scenario to continue"
+        },
+        "31": {
+            "Spanish": "Escenario",
+            "English": "Scenery"
+        },
+        "32": {
+            "Spanish": "Vamos!",
+            "English": "Go!"
+        },
+        "33": {
+            "Spanish": "Juego en Pausa",
+            "English": "Game on Pause"
+        },
+        "34": {
+            "Spanish": "Reanudar",
+            "English": "Resume"
+        },
+        "35": {
+            "Spanish": "Reiniciar",
+            "English": "Restart"
+        },
+        "36": {
+            "Spanish": "Ir al menu Principal",
+            "English": "Go to main menu"
+        },
+        "37": {
+            "Spanish": "Musica",
+            "English": "Music"
+        },
+        "38": {
+            "Spanish": "Anterior",
+            "English": "Previous"
+        },
+        "39": {
+            "Spanish": "Aleatorio",
+            "English": "Random"
+        },
+        "40": {
+            "Spanish": "Siguiente",
+            "English": "Incoming"
+        },
+        "41": {
+            "Spanish": "Arte y Sprites",
+            "English": "Art and Sprites"
+        },
+        "42": {
+            "Spanish": "Escenarios",
+            "English": "Stages"
+        },
+        "43": {
+            "Spanish": "Musicas y efectos de sonido",
+            "English": "Musics and sound effects"
+        },
+        "44": {
+            "Spanish": "Agradecimientos Especiales",
+            "English": "Special Thanks"
+        },
+        "45": {
+            "Spanish": "Escenarios y musicas",
+            "English": "Stages and music"
+        },
+        "46": {
+            "Spanish": "Creador del juego, desarrollador completo del mismo, programacion, sonidos, etc.",
+            "English": "Game creator, complete game developer, programming, sounds, etc."
+        },
+        "47": {
+            "Spanish": "Creador de juegos en PowerPoint, gracias a sus Codigos complejos de  acceso gratis por facilitar muchas tareas para el juego.",
+            "English": "Game creator in PowerPoint, thanks to its complex Free Access Codes for facilitating many tasks for the game."
+        },
+        "48": {
+            "Spanish": "Creador de juegos en PowerPoint, gracias a sus Codigos gratuito ''Game Facilitator'' se pudo mejorar mucho el rendimiento del juego.",
+            "English": "Creator of games in PowerPoint, thanks to its free ''Game Facilitator'' Codes, the performance of the game could be greatly improved."
+        },
+        "49": {
+            "Spanish": "Muchisimas gracias por haberme adentrado al mundo de la programacion y al desarrollo de videojuegos.",
+            "English": "Thank you very much for introducing me to the world of programming and video game development."
+        },
+        "50": {
+            "Spanish": "Artistas de la comunidad y packs gratuitos de uso no comercial.",
+            "English": "Artists from the community and free non-commercial use packs."
+        },
+        "51": {
+            "Spanish": "Para los escenarios se utilizo del juego ''Dragon Ball Xenoverse 2'' en su modo camara.",
+            "English": "For the scenarios, the game ''Dragon Ball Xenoverse 2'' was used in its camera mode."
+        },
+        "52": {
+            "Spanish": "La mayoria de las músicas utilizadas para los fondos son del juego ''FighterZ'' y otras ost de la serie original.",
+            "English": "Most of the music used for the backgrounds are from the game ''FighterZ'' and other ost from the original series."
+        },
+        "53": {
+            "Spanish": "Volver",
+            "English": "Back"
+        },
+        "54": {
+            "Spanish": "Abrir lista",
+            "English": "Open list"
+        },
+        "55": {
+            "Spanish": "Tacleo",
+            "English": "Tackle"
+        },
+        "56": {
+            "Spanish": "Emote",
+            "English": "Emote"
+        },
+        "57": {
+            "Spanish": "Controles Jugador 1",
+            "English": "Player 1 Controls"
+        },
+        "58": {
+            "Spanish": "Movimiento",
+            "English": "Movement"
+        },
+        "59": {
+            "Spanish": "Combate",
+            "English": "Combat"
+        },
+        "60": {
+            "Spanish": "Energia",
+            "English": "Energy"
+        },
+        "61": {
+            "Spanish": "Salto",
+            "English": "Jump"
+        },
+        "62": {
+            "Spanish": "Izquierda",
+            "English": "Left"
+        },
+        "63": {
+            "Spanish": "Derecha",
+            "English": "Right"
+        },
+        "64": {
+            "Spanish": "Cubrirse",
+            "English": "Cover"
+        },
+        "65": {
+            "Spanish": "Golpe",
+            "English": "Hit"
+        },
+        "66": {
+            "Spanish": "Patada",
+            "English": "Kick"
+        },
+        "67": {
+            "Spanish": "Cargar",
+            "English": "Charge"
+        },
+        "68": {
+            "Spanish": "Disparo Ki",
+            "English": "Ki Blast"
+        },
+        "69": {
+            "Spanish": "Victoria",
+            "English": "Victory"
+        },
+        "70":{
+            "Spanish": "Cargando...",
+            "English": "Loading..."
+        },
+        "71":{
+            "Spanish": "Ocurrio un error al cargar los chars, vuelva a escogerlos nuevamente.",
+            "English": "An error occurred while loading the chars, please choose them again."
+        },
+        "72":{
+            "Spanish": "Escoger nuevos peleadores",
+            "English": "Select new fighters"
+        },
+        "73":{
+            "Spanish": "Salir al menu principal",
+            "English": "Exit to main menu"
+        },
+        "74":{
+            "Spanish": "Revancha",
+            "English": "Rematch"
+        },
+        "75":{
+            "Spanish": "Desactivado",
+            "English": "Disable"
+        },
+        "76":{
+            "Spanish": "Activado",
+            "English": "Eneable"
+        },
+        "78":{
+            "Spanish": "Transformacion instantanea",
+            "English": "Instant transformation"
+        },
+        "79":{
+            "Spanish": "Efecto de destello",
+            "English": "Flash effect"
+        },
+        "80":{
+            "Spanish": "Sombras",
+            "English": "Shadows"
+        },
+        "81":{
+            "Spanish": "Animacion barra de vida",
+            "English": "Life bar animation"
+        },
+        "82":{
+            "Spanish": "Animacion barra de energia",
+            "English": "Energy bar animation"
+        },
+        "83":{
+            "Spanish": "Total de rondas",
+            "English": "Total Rounds"
+        },
+        "84": {
+            "Spanish": "Controles Jugador 2",
+            "English": "Player 2 Controls"
+        },
+        "85": {
+            "Spanish": "Otros",
+            "English": "Others"
+        },
+        "86": {
+            "Spanish": "Mostrar FPS",
+            "English": "Show FPS"
+        },
+        "87": {
+            "Spanish": "Mostrar Hitboxes",
+            "English": "Show Hitboxes"
+        },
+        "88": {
+            "Spanish": "Pausar Juego",
+            "English": "Pause Game"
+        },
+        "89": {
+            "Spanish": "Habilitar Bot (Jugador 2)",
+            "English": "Eneable Bot (Player 2)"
+        },
+        "90":{
+            "Spanish": "Efectos en personajes",
+            "English": "Effects on Characters"
+        },
+        "91":{
+            "Spanish": "Efectos de explosiones",
+            "English": "Explosion effects"
+        },
+        "92":{
+            "Spanish": "Continuar de todas formas",
+            "English": "Continue in all ways"
+        },
+        "93":{
+            "Spanish": "Efectos de golpes",
+            "English": "Hit effects"
+        },
+        "94":{
+            "Spanish": "Efectos de patadas",
+            "English": "Kick effects"
+        },
+        "95":{
+            "Spanish": "Efecto de tacleo",
+            "English": "Tackling effect"
+        },
+        "96":{
+            "Spanish": "Efecto disparo Ki",
+            "English": "Ki shot effect"
+        },
+        "97":{
+            "Spanish": "Efecto explosion Ki",
+            "English": "Ki blast effect"
+        },
+        "98":{
+            "Spanish": "Efecto teletransporte",
+            "English": "Teleport effect"
+        },
+        "99":{
+            "Spanish": "Controles",
+            "English": "Controls"
+        }
+    }
+}

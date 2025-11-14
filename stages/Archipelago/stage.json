@@ -1,0 +1,10 @@
+{    
+    "folder": "Archipelago",
+    "name": "Archipielago",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": true,
+        "effects": true
+    }
+}

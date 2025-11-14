@@ -1,0 +1,25 @@
+{    
+    "folder": "KidGohan",
+	"base": "ssj2",
+    "name": "Kid Gohan",
+    "statistics": {
+        "speed": 475,
+        "life": 100,
+        "damaged": 113,
+        "defence": 18,
+        "Attack Speed": 7.5
+    },
+    "base color":{
+        "eneable": true,
+        "color": "#ffff00",
+        "radio": 5,
+        "transparecy": 60
+    },
+    "Char Effects":{
+        "Phase 0": {"eneable": true, "effect": "cianray", "speed": 0.12, "transparecy": 20}
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "fastCharge"
+	}
+}

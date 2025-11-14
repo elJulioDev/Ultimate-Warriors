@@ -1,0 +1,9 @@
+{    
+    "folder": "Kami Lookout",
+    "name": "Atalaya kami",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": true
+    }
+}

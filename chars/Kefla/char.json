@@ -1,0 +1,34 @@
+{    
+    "folder": "Kefla",
+	"base": "lssj",
+    "name": "Kefla",
+    "statistics": {
+        "speed": 500,
+        "life": 140,
+        "damaged": 110,
+        "defence": 20,
+        "Attack Speed": 6.5,
+        "Stand Speed": 10
+    },
+    "base color":{
+        "eneable": true,
+        "color": "#7AB823",
+        "radio": 5,
+        "transparecy": 60
+    },
+    "transformation": {
+        "eneable": false,
+        "phase 1": "lssj"
+    },
+    "transformation color":{
+        "eneable": false,
+        "phase 1":{"color": "#7AB823", "radio": 5, "transparecy": 60}
+    },
+    "Char Effects":{
+        "Phase 0": {"eneable": true, "effect": "green", "speed": 0.12, "transparecy": 70}
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "fastCharge"
+	}
+}

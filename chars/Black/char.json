@@ -1,0 +1,28 @@
+{    
+    "folder": "Black",
+	"base": "normal",
+    "name": "Black Goku",
+    "statistics": {
+        "speed": 425,
+        "life": 100,
+        "damaged": 95,
+        "defence": 15.5
+    },
+    "transformation": {
+        "eneable": true,
+        "phase 2": "ssj",
+        "phase 5": "rose"
+    },
+    "transformation color":{
+        "eneable": true,
+        "phase 2":{"color": "#ffff00", "radio": 4, "transparecy": 75},
+        "phase 5":{"color": "#e572ff", "radio": 5, "transparecy": 60}
+    },
+    "Char Effects":{
+        "Phase 2": {"eneable": false, "effect": "yellow", "speed": 0.12, "transparecy": 70},
+        "Phase 5": {"eneable": true, "effect": "purple", "speed": 0.12, "transparecy": 70}
+    },
+	"cheats":{
+		"slot 1": "teleport"
+	}
+}

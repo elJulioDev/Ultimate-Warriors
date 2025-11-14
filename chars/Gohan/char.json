@@ -1,0 +1,32 @@
+{    
+    "folder": "Gohan",
+	"base": "base",
+    "name": "Gohan",
+    "statistics": {
+        "speed": 400,
+        "life": 100,
+        "damaged": 95,
+        "defence": 16
+    },
+    "transformation": {
+        "eneable": true,
+        "phase 1": "ssj",
+        "phase 4": "ultimate",
+        "phase 6": "beast"
+    },
+    "transformation color":{
+        "eneable": true,
+        "phase 1":{"color": "#ffc700", "radio": 5, "transparecy": 60},
+        "phase 4":{"color": "#ffffff", "radio": 0, "transparecy": 100},
+        "phase 6":{"color": "#857590", "radio": 5, "transparecy": 50}
+    },
+    "Char Effects":{
+        "Phase 1": {"eneable": false, "effect": "yellow", "speed": 0.12, "transparecy": 60},
+        "Phase 4": {"eneable": true, "effect": "cian", "speed": 0.12, "transparecy": 80},
+        "Phase 6": {"eneable": true, "effect": "cian", "speed": 0.08, "transparecy": 65}
+    },
+	"cheats":{
+		"slot 1": "fastCharge",
+		"slot 2": "teleport"
+	}
+}

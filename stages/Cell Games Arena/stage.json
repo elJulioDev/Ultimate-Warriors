@@ -1,0 +1,9 @@
+{    
+    "folder": "Cell Games Arena",
+    "name": "Pista juegos de cell",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": true
+    }
+}

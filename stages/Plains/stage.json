@@ -1,0 +1,9 @@
+{    
+    "folder": "Plains",
+    "name": "Llanuras",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": true
+    }
+}

@@ -1,0 +1,39 @@
+{    
+    "folder": "Alex",
+	"base": "normal",
+    "name": "Alex",
+    "statistics": {
+        "speed": 450,
+        "life": 150,
+        "damaged": 100,
+        "defence": 17
+    },
+    "transformation": {
+        "eneable": true,
+        "phase 2": "ssj",
+        "phase 5": "god",
+        "phase 6": "blue"
+    },
+    "transformation color":{
+        "eneable": true,
+        "phase 2":{"color": "#ffff00", "radio": 5, "transparecy": 60},
+        "phase 3":{"color": "#ffff00", "radio": 5, "transparecy": 60},
+        "phase 5":{"color": "#ff1900", "radio": 5, "transparecy": 60},
+        "phase 6":{"color": "#00aaff", "radio": 5, "transparecy": 60},
+        "cheat phase 2":{"color": "#ffffff", "radio": 5, "transparecy": 60},
+        "cheat phase":{"color": "#921E73", "radio": 3, "transparecy": 40}
+    },
+    "Char Effects":{
+        "Phase 2": {"eneable": false, "effect": "yellow", "speed": 0.12, "transparecy": 70},
+        "Phase 3": {"eneable": true, "effect": "cianray", "speed": 0.12, "transparecy": 20},
+        "Phase 5": {"eneable": true, "effect": "god", "speed": 0.12, "transparecy": 70},
+        "Phase 6": {"eneable": true, "effect": "blue", "speed": 0.12, "transparecy": 70},
+        "Phase 7": {"eneable": true, "effect": "purple", "speed": 0.08, "transparecy": 65}
+    },
+	"cheats":{
+		"slot 1": "fastCharge",
+		"slot 2": "teleport",
+		"slot 3": "kaiokenx4",
+        "slot 4": "ue"
+	}
+}

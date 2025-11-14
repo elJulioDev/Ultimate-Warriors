@@ -1,0 +1,15 @@
+{    
+    "folder": "Videl",
+	"base": "base",
+    "name": "Videl",
+    "statistics": {
+        "speed": 400,
+        "life": 100,
+        "damaged": 85,
+        "defence": 12,
+        "Attack Speed": 6.5
+    },
+	"cheats":{
+		"slot 1": "teleport"
+	}
+}

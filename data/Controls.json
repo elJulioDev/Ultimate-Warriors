@@ -1,0 +1,45 @@
+{    
+    "Controls": {
+        "Player 1": {
+            "Movement": {
+                "Jump": "W",
+                "Left": "A",
+                "Right": "D",
+                "Cover up": "S"
+            },
+            "Combat": {
+                "Punch": "J",
+                "Kick": "K"
+            },
+            "Energy": {
+                "Charge": "P",
+                "Ki shot": "L",
+                "Tackle": "O"
+            },
+            "Emote": "E"
+        },
+        "Player 2": {
+            "Movement": {
+                "Jump": "Up",
+                "Left": "Left",
+                "Right": "Right",
+                "Cover up": "Down"
+            },
+            "Combat": {
+                "Punch": "V",
+                "Kick": "B"
+            },
+            "Energy": {
+                "Charge": "N",
+                "Ki shot": "M",
+                "Tackle": "C"
+            },
+            "Emote": "X"
+        },
+        "Others": {
+            "Show FPS": "F3",
+            "Show Hitbox": "F4",
+            "Pause": "ENTER"
+        }
+    }
+}

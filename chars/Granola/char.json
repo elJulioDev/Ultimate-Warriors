@@ -1,0 +1,17 @@
+{    
+    "folder": "Granola",
+	"base": "base",
+    "name": "Granola",
+    "statistics": {
+        "speed": 500,
+        "life": 150,
+        "damaged": 130,
+        "defence": 20,
+        "Attack Speed": 6.5
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "Accuracy",
+		"slot 3": "fastCharge"
+	}
+}

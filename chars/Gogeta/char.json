@@ -1,0 +1,26 @@
+{    
+    "folder": "Gogeta",
+	"base": "blue",
+    "name": "Gogeta",
+    "statistics": {
+        "speed": 525,
+        "life": 150,
+        "damaged": 140,
+        "defence": 20,
+        "Attack Speed": 6.5,
+        "Taunt Speed": 12
+    },
+    "base color":{
+        "eneable": true,
+        "color": "#00aaff",
+        "radio": 3,
+        "transparecy": 60
+    },
+    "Char Effects":{
+        "Phase 0": {"eneable": true, "effect": "blue", "speed": 0.08, "transparecy": 70}
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "fastCharge"
+    }
+}

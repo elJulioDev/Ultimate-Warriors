@@ -1,0 +1,9 @@
+{    
+    "folder": "Destroyed Planet Namek",
+    "name": "Planeta Namek (Destruido)",
+    "settings": {
+        "filter": true,
+        "color": "#FF0000",
+		"shadow": true
+    }
+}

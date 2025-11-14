@@ -1,0 +1,10 @@
+{    
+    "folder": "Underground Lake",
+    "name": "Lago subterraneo",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": true,
+        "effects": false
+    }
+}

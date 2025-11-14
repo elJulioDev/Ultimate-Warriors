@@ -1,0 +1,9 @@
+{    
+    "folder": "Hell",
+    "name": "Infierno",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": true
+    }
+}

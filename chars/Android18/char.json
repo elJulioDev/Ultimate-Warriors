@@ -1,0 +1,16 @@
+{    
+    "folder": "Android18",
+	"base": "base",
+    "name": "Android 18",
+    "statistics": {
+        "speed": 450,
+        "life": 100,
+        "damaged": 97,
+        "defence": 16,
+        "Attack Speed": 6.5
+    },
+	"cheats":{
+		"slot 1": "Android",
+		"slot 2": "teleport"
+	}
+}

@@ -1,0 +1,18 @@
+{    
+    "folder": "SuperBuuGohan",
+	"base": "base",
+    "name": "Majin Buu (Gohan)",
+    "statistics": {
+        "speed": 525,
+        "life": 145,
+        "damaged": 120,
+        "defence": 19,
+        "Attack Speed": 6.5,
+        "Stand Speed": 15
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "fastCharge",
+        "slot 3": "RecoverLife=1"
+	}
+}

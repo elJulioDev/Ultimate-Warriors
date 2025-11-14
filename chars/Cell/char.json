@@ -1,0 +1,24 @@
+{    
+    "folder": "Cell",
+	"base": "Perfect",
+    "name": "Perfect Cell",
+    "statistics": {
+        "speed": 475,
+        "life": 100,
+        "damaged": 114,
+        "defence": 18,
+        "Attack Speed": 7
+    },
+    "base color":{
+        "eneable": true,
+        "color": "#ffff00",
+        "radio": 3,
+        "transparecy": 80
+    },
+    "Char Effects":{
+        "Phase 0": {"eneable": true, "effect": "cianray", "speed": 0.12, "transparecy": 20}
+    },
+	"cheats":{
+		"slot 1": "teleport"
+	}
+}

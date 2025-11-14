@@ -1,0 +1,30 @@
+{
+    "folder": "Trunks",
+	"base": "base",
+    "name": "Trunks (Future)",
+    "statistics": {
+        "speed": 400,
+        "life": 100,
+        "damaged": 90,
+        "defence": 15
+    },
+    "transformation": {
+        "eneable": true,
+        "phase 2": "ssj",
+        "phase 4": "ssj2"
+    },
+    "transformation color":{
+        "eneable": true,
+        "phase 2":{"color": "#ffff00", "radio": 5, "transparecy": 60},
+        "phase 4":{
+            "color": "#8BE1FF", "radio": 3, "transparecy": 45}
+    },
+    "Char Effects":{
+        "Phase 2": {"eneable": false, "effect": "yellow", "speed": 0.12, "transparecy": 70},
+        "Phase 4": {"eneable": true, "effect": "cianray", "speed": 0.12, "transparecy": 20}
+    },
+	"cheats":{
+		"slot 1": "fixK",
+        "slot 2": "teleport"
+	}
+}

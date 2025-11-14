@@ -1,0 +1,35 @@
+{    
+    "folder": "Moro",
+	"base": "base",
+    "name": "Moro",
+    "statistics": {
+        "speed": 500,
+        "life": 150,
+        "damaged": 130,
+        "defence": 20,
+        "Attack Speed": 6.5
+    },
+    "transformation": {
+        "eneable": false,
+        "phase 1": "mui"
+    },
+    "base color": {
+        "eneable": true,
+        "color": "#ff7000",
+        "radio": 3,
+        "transparecy": 65
+    },
+    "transformation color":{
+        "eneable": false,
+        "phase 1":{
+            "color": "#ffffff", "radio": 5, "transparecy": 60
+        }
+    },
+    "Char Effects":{
+        "Phase 0": {"eneable": false, "effect": "god", "speed": 0.12, "transparecy": 85}
+    },
+	"cheats":{
+		"slot 1": "fastCharge",
+		"slot 2": "teleport"
+	}
+}

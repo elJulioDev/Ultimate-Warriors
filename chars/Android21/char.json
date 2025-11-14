@@ -1,0 +1,17 @@
+{    
+    "folder": "Android21",
+	"base": "base",
+    "name": "Android 21",
+    "statistics": {
+        "speed": 450,
+        "life": 100,
+        "damaged": 100,
+        "defence": 16,
+        "Attack Speed": 7.5,
+        "Stand Speed": 10
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "RecoverLife=1"
+	}
+}

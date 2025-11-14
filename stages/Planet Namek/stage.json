@@ -1,0 +1,9 @@
+{    
+    "folder": "Planet Namek",
+    "name": "Planeta Namek",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": true
+    }
+}

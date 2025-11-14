@@ -1,0 +1,9 @@
+{    
+    "folder": "Westland",
+    "name": "Yermos",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": true
+    }
+}

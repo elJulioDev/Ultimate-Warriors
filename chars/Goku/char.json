@@ -1,0 +1,46 @@
+{    
+    "folder": "Goku",
+	"base": "normal",
+    "name": "Son Goku",
+    "statistics": {
+        "speed": 420,
+        "life": 100,
+        "damaged": 97,
+		"defence": 17,
+        "Taunt Speed": 12
+    },
+    "transformation": {
+        "eneable": true,
+        "phase 1": "ssj",
+        "phase 2": "ssj2",
+        "phase 3": "ssj3",
+        "phase 4": "god",
+        "phase 5": "blue",
+        "phase 6": "ui"
+    },
+    "transformation color":{
+        "eneable": true,
+        "phase 1":{"color": "#ffff00", "radio": 4, "transparecy": 75},
+        "phase 2":{"color": "#ffff00", "radio": 4, "transparecy": 75},
+        "phase 3":{"color": "#ffff00", "radio": 5, "transparecy": 60},
+        "phase 4":{"color": "#ff0000", "radio": 4, "transparecy": 50},
+        "phase 5":{"color": "#2FC7FE", "radio": 3, "transparecy": 75},
+        "phase 6":{"color": "#8faadc", "radio": 5, "transparecy": 60},
+        "cheat phase":{"color": "#95A4D6", "radio": 3, "transparecy": 40}
+    },
+    "Char Effects":{
+        "Phase 1": {"eneable": false, "effect": "yellow", "speed": 0.12, "transparecy": 70},
+        "Phase 2": {"eneable": true, "effect": "cianray", "speed": 0.12, "transparecy": 20},
+        "Phase 3": {"eneable": true, "effect": "cianray", "speed": 0.12, "transparecy": 20},
+        "Phase 4": {"eneable": true, "effect": "god", "speed": 0.12, "transparecy": 70},
+        "Phase 5": {"eneable": true, "effect": "blue", "speed": 0.12, "transparecy": 70},
+        "Phase 6": {"eneable": true, "effect": "cian", "speed": 0.08, "transparecy": 70},
+        "Phase 7": {"eneable": true, "effect": "cian", "speed": 0.08, "transparecy": 65}
+    },
+	"cheats":{
+		"slot 1": "mui",
+		"slot 2": "kaiokenx4",
+		"slot 3": "teleport",
+        "slot 4": "dodge=phase:6"
+	}
+}

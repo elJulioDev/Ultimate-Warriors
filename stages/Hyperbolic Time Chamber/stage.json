@@ -1,0 +1,10 @@
+{    
+    "folder": "Hyperbolic Time Chamber",
+    "name": "Habitacion del tiempo",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": true,
+        "effects": false
+    }
+}

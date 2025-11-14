@@ -1,0 +1,9 @@
+{    
+    "folder": "Tournament of Power Arena",
+    "name": "Torneo del poder",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": true
+    }
+}

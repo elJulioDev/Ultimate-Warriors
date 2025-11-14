@@ -1,0 +1,9 @@
+{    
+    "folder": "Open Field",
+    "name": "Campo Abierto",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": false
+    }
+}

@@ -1,0 +1,9 @@
+{    
+    "folder": "World Tournament Stage",
+    "name": "Tenkaichi Budokai",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": true
+    }
+}

@@ -1,0 +1,27 @@
+{    
+    "folder": "Gotenks",
+	"base": "ssj3",
+    "name": "Super Gotenks",
+    "statistics": {
+        "speed": 450,
+        "life": 100,
+        "damaged": 115,
+		"defence": 18,
+        "Attack Speed": 7.5
+    },
+    "base color":{
+        "eneable": true,
+        "color": "#ffff00",
+        "radio": 5,
+        "transparecy": 60
+    },
+    "Char Effects":{
+        "Phase 0": {"eneable": true, "effect": "cianray", "speed": 0.12, "transparecy": 20}
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "fastCharge",
+		"slot 3": "",
+		"slot 4": ""
+	}
+}

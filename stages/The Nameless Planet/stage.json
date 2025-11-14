@@ -1,0 +1,9 @@
+{    
+    "folder": "The Nameless Planet",
+    "name": "Planeta sin nombre",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": true
+    }
+}

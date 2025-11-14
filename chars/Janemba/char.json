@@ -1,0 +1,26 @@
+{    
+    "folder": "Janemba",
+	"base": "base",
+    "name": "Janemba",
+    "statistics": {
+        "speed": 475,
+        "life": 140,
+        "damaged": 113,
+        "defence": 19,
+        "Attack Speed": 6.5,
+        "Stand Speed": 12
+    },
+    "base color":{
+        "eneable": true,
+        "color": "#BA7BE1",
+        "radio": 2,
+        "transparecy": 65
+    },
+    "Char Effects":{
+        "Phase 0": {"eneable": false, "effect": "purple", "speed": 0.12, "transparecy": 85}
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "fastCharge"
+    }
+}

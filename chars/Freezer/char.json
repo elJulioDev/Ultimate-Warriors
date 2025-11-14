@@ -1,0 +1,30 @@
+{    
+    "folder": "Freezer",
+	"base": "normal",
+    "name": "Freezer",
+    "statistics": {
+        "speed": 425,
+        "life": 100,
+        "damaged": 95,
+        "defence": 18,
+        "Attack Speed": 7.5,
+        "Stand Speed": 13
+    },
+    "transformation": {
+        "eneable": true,
+        "phase 5": "golden"
+    },
+    "transformation color":{
+        "eneable": true,
+        "phase 5":{"color": "#FC8907", "radio": 3, "transparecy": 25},
+        "cheat phase":{"color": "#310B51", "radio": 3, "transparecy": 30}
+    },
+    "Char Effects":{
+        "Phase 5": {"eneable": true, "effect": "golden", "speed": 0.12, "transparecy": 60},
+        "Phase 6": {"eneable": true, "effect": "purple", "speed": 0.08, "transparecy": 65}
+    },
+	"cheats":{
+		"slot 1": "black",
+		"slot 2": "teleport"
+	}
+}

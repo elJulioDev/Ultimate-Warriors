@@ -1,0 +1,29 @@
+{    
+    "folder": "Jiren",
+	"base": "normal",
+    "name": "Jiren",
+    "statistics": {
+        "speed": 500,
+        "life": 150,
+        "damaged": 115,
+        "defence": 20,
+        "Attack Speed": 7,
+        "Aura Speed": 7
+    },
+    "transformation": {
+        "eneable": true,
+        "phase 2": "FullPower"
+    },
+    "transformation color":{
+        "eneable": true,
+        "phase 2":{"color": "#ff0000", "radio": 5, "transparecy": 40}
+    },
+    "Char Effects":{
+        "Phase 2": {"eneable": true, "effect": "red", "speed": 0.08, "transparecy": 65}
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "noformback",
+		"slot 3": "fastCharge"
+	}
+}

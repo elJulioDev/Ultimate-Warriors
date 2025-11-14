@@ -1,0 +1,9 @@
+{    
+    "folder": "Rocky Site",
+    "name": "Sitio Rocoso",
+    "settings": {
+        "filter": false,
+        "color": "",
+		"shadow": true
+    }
+}

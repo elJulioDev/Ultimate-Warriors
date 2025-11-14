@@ -1,0 +1,31 @@
+{    
+    "folder": "Broly",
+	"base": "rage",
+    "name": "Broly",
+    "statistics": {
+        "speed": 500,
+        "life": 100,
+        "damaged": 110,
+        "defence": 18,
+        "Attack Speed": 7.5
+    },
+    "transformation": {
+        "eneable": true,
+        "phase 4": "ssj"
+    },
+    "transformation color":{
+        "eneable": true,
+        "phase 4":{"color": "#ffff00", "radio": 5, "transparecy": 60},
+        "cheat phase":{"color": "#00FF00", "radio": 5, "transparecy": 30}
+    },
+    "Char Effects":{
+        "Phase 4": {"eneable": true, "effect": "yellow", "speed": 0.12, "transparecy": 60},
+        "Phase 5": {"eneable": true, "effect": "green", "speed": 0.08, "transparecy": 65}
+    },
+	"cheats":{
+		"slot 1": "updim",
+        "slot 2": "SSFP",
+		"slot 3": "noformback",
+        "slot 4": "teleport"
+	}
+}

@@ -1,0 +1,22 @@
+{    
+    "folder": "Cooler",
+	"base": "base",
+    "name": "Cooler",
+    "statistics": {
+        "speed": 425,
+        "life": 100,
+        "damaged": 95,
+        "defence": 16,
+        "Attack Speed": 7,
+        "Stand Speed": 13
+    },
+    "transformation": {
+        "eneable": true,
+        "phase 1": "final"
+    },
+	"cheats":{
+		"slot 1": "teleport",
+		"slot 2": "updim=phase:1",
+        "slot 3": "fastcharge"
+	}
+}
