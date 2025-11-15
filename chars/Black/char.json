@@ -5,9 +5,9 @@
     "statistics": {
         "speed": 425,
         "life": 100,
-        "damaged": 95,
-        "defence": 15.5
-    },
+        "damaged": 97,
+        "defence": 18
+    }, 
     "transformation": {
         "eneable": true,
         "phase 2": "ssj",

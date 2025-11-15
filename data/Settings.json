@@ -1,10 +1,10 @@
 {    
     "Performance": {
-        "Loading effects": true,
-        "Movement in background": true,
+        "Loading effects": false,
+        "Movement in background": false,
         "Shadows": true,
-        "Life bar animation": true,
-        "Energy bar animation": true,
+        "Life bar animation": false,
+        "Energy bar animation": false,
         "Char Effects": true,
         "Explosions Effects": true,
         "Poor quality backgrounds": {
@@ -15,39 +15,39 @@
     "Sound": {
         "Effects when loading": {
             "Eneable": true,
-            "Volume": 100
+            "Volume": 20
         },
         "Music in game": {
             "Eneable": true,
-            "Volume": 100
+            "Volume": 20
         },
         "Music in menu": {
             "Eneable": true,
-            "Volume": 100
+            "Volume": 20
         },
         "Hit effects": {
             "Eneable": true,
-            "Volume": 100
+            "Volume": 20
         },
         "Kick effects": {
             "Eneable": true,
-            "Volume": 100
+            "Volume": 20
         },
         "Tackling effect": {
             "Eneable": true,
-            "Volume": 100
+            "Volume": 20
         },
         "Ki shot effect": {
             "Eneable": true,
-            "Volume": 100
+            "Volume": 20
         },
         "Ki blast effect": {
             "Eneable": true,
-            "Volume": 100
+            "Volume": 20
         },
         "Teleportation effect": {
             "Eneable": true,
-            "Volume": 100
+            "Volume": 20
         }
     },
     "Game": {
@@ -55,7 +55,7 @@
         "Rounds": 2,
         "Instant Transformation": true,
         "Flash effect": true,
-        "Bot": true,
-        "Language": "English"
+        "Bot": false,
+        "Language": "Spanish"
     }
 }
