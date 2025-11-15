@@ -1,21 +1,21 @@
 {    
     "jugador1": {
-        "x": 198,
+        "x": 795,
         "y": 301,
         "hit": {
-            "x": 263,
+            "x": 796,
             "y": 367
         },
         "hitbox": {
-            "x": 230,
+            "x": 828,
             "y": 345
         },
-        "hp": 100,
-        "carga": 13,
-        "ki": 0,
-        "damaged": 97,
-        "defence": 17,
-        "speed": 420,
+        "hp": 96.2666666666667,
+        "carga": 151.25,
+        "ki": 1,
+        "damaged": 112,
+        "defence": 18,
+        "speed": 450,
         "transformado": false,
         "cap form actual": 0,
         "cubriendose": false,
@@ -27,54 +27,54 @@
             "cubrirse": false
         },
         "colision": false,
-        "cantidad de transformaciones": 6,
-        "puede transformarse": true,
-        "Maxima transformacion": 6,
-        "Forma Cheat": "mui",
-        "puede usar kaioken": "kaiokenx4",
+        "cantidad de transformaciones": 0,
+        "puede transformarse": false,
+        "Maxima transformacion": 0,
+        "Forma Cheat": "",
+        "puede usar kaioken": "",
         "puede usar timejump": false,
         "puede teletransportarse": true,
         "ClashTackle": false,
         "estado critico": false,
-        "fase actual": "normal"
+        "fase actual": "base"
     },
     "jugador2": {
-        "x": 668,
-        "y": 301,
+        "x": 0,
+        "y": 265,
         "hit": {
-            "x": 670,
-            "y": 367
+            "x": 78,
+            "y": 356
         },
         "hitbox": {
-            "x": 701,
-            "y": 345
+            "x": 41,
+            "y": 325
         },
-        "hp": 100,
-        "carga": 13,
-        "ki": 0,
-        "damaged": 95,
-        "defence": 15.5,
-        "speed": 425,
-        "transformado": false,
-        "cap form actual": 0,
+        "hp": 92.1066666666667,
+        "carga": 239,
+        "ki": 2,
+        "damaged": 105,
+        "defence": 21,
+        "speed": 450,
+        "transformado": true,
+        "cap form actual": 1,
         "cubriendose": false,
         "acciones": {
             "golpe": false,
             "patada": false,
-            "cargando": false,
+            "cargando": true,
             "disparando": false,
             "cubrirse": false
         },
         "colision": false,
-        "cantidad de transformaciones": 2,
+        "cantidad de transformaciones": 1,
         "puede transformarse": true,
-        "Maxima transformacion": 5,
+        "Maxima transformacion": 1,
         "Forma Cheat": "",
         "puede usar kaioken": "",
         "puede teletransportarse": true,
         "puede usar timejump": false,
         "ClashTackle": false,
         "estado critico": false,
-        "fase actual": "normal"
+        "fase actual": "final"
     }
 }

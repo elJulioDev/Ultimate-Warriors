@@ -5,8 +5,8 @@
     "statistics": {
         "speed": 450,
         "life": 100,
-        "damaged": 97,
-        "defence": 16,
+        "damaged": 113,
+        "defence": 19,
         "Attack Speed": 6.5
     },
 	"cheats":{

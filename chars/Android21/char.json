@@ -5,8 +5,8 @@
     "statistics": {
         "speed": 450,
         "life": 100,
-        "damaged": 100,
-        "defence": 16,
+        "damaged": 110,
+        "defence": 18,
         "Attack Speed": 7.5,
         "Stand Speed": 10
     },
