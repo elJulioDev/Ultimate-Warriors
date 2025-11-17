@@ -436,7 +436,7 @@ def precise_attack_logic():
             return
         
         # ✅ CANCELAR si lleva más de 0.08s atacando (sin importar colision)
-        if tiempo_atacando > 0.08:
+        if tiempo_atacando > 0.4:
             keyboard.release(current_attack_key)
             attacking = False
             current_attack_key = None
