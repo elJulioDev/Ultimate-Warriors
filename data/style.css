@@ -76,8 +76,8 @@ body {
 .sidebar-header h1 {
     font-size: 1.4rem;
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 5px;
 }
@@ -310,7 +310,6 @@ body {
 .sprite-img {
     position: absolute;
     image-rendering: pixelated;
-    image-rendering: crisp-edges;
     filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
     opacity: 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
