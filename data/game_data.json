@@ -1,20 +1,20 @@
 {    
     "jugador1": {
-        "x": 795,
+        "x": 114,
         "y": 301,
         "hit": {
-            "x": 796,
-            "y": 367
+            "x": 117,
+            "y": 353
         },
         "hitbox": {
-            "x": 828,
+            "x": 147,
             "y": 345
         },
-        "hp": 96.2666666666667,
-        "carga": 151.25,
+        "hp": 78.3789473684211,
+        "carga": 104.2,
         "ki": 1,
-        "damaged": 112,
-        "defence": 18,
+        "damaged": 113,
+        "defence": 19,
         "speed": 450,
         "transformado": false,
         "cap form actual": 0,
@@ -39,42 +39,42 @@
         "fase actual": "base"
     },
     "jugador2": {
-        "x": 0,
-        "y": 265,
+        "x": 83,
+        "y": 160,
         "hit": {
-            "x": 78,
-            "y": 356
+            "x": 146,
+            "y": 240
         },
         "hitbox": {
-            "x": 41,
-            "y": 325
+            "x": 115,
+            "y": 203
         },
-        "hp": 92.1066666666667,
-        "carga": 239,
-        "ki": 2,
-        "damaged": 105,
-        "defence": 21,
-        "speed": 450,
-        "transformado": true,
-        "cap form actual": 1,
+        "hp": 85.3263333333335,
+        "carga": 19,
+        "ki": 0,
+        "damaged": 130,
+        "defence": 20,
+        "speed": 500,
+        "transformado": false,
+        "cap form actual": 0,
         "cubriendose": false,
         "acciones": {
             "golpe": false,
             "patada": false,
-            "cargando": true,
+            "cargando": false,
             "disparando": false,
             "cubrirse": false
         },
         "colision": false,
-        "cantidad de transformaciones": 1,
-        "puede transformarse": true,
-        "Maxima transformacion": 1,
+        "cantidad de transformaciones": 0,
+        "puede transformarse": false,
+        "Maxima transformacion": 0,
         "Forma Cheat": "",
         "puede usar kaioken": "",
         "puede teletransportarse": true,
         "puede usar timejump": false,
         "ClashTackle": false,
         "estado critico": false,
-        "fase actual": "final"
+        "fase actual": "base"
     }
 }
