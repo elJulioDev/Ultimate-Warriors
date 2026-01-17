@@ -52,10 +52,10 @@
     },
     "Game": {
         "Game Time": "Unlimited",
-        "Rounds": 4,
+        "Rounds": 2,
         "Instant Transformation": true,
         "Flash effect": true,
         "Bot": true,
-        "Language": "Spanish"
+        "Language": "English"
     }
 }

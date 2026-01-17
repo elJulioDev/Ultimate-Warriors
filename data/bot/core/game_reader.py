@@ -1,5 +1,6 @@
 """
 Módulo de lectura de datos del juego
+Lee y valida el archivo game_data.json generado por VBA
 """
 
 import json
@@ -12,190 +13,94 @@ class GameReader:
     
     def __init__(self):
         self.data_file = Config.GAME_DATA_FILE
-        self.last_data = {}
+        self.last_valid_data = {}
+        self.read_count = 0
+        self.error_count = 0
     
     def read(self):
-        """Lee el archivo game_data.json y retorna los datos"""
+        """
+        Lee el archivo game_data.json y retorna los datos
+        
+        Returns:
+            dict: Datos del juego con estructura {jugador1: {...}, jugador2: {...}}
+            Si hay error, retorna el último dato válido o {}
+        """
+        # Verificar que el archivo existe
         if not self.data_file.exists():
-            return {}
+            if self.error_count == 0:  # Solo mostrar una vez
+                print(f"⚠️ Archivo no encontrado: {self.data_file}")
+            self.error_count += 1
+            return self.last_valid_data
         
         try:
             with open(self.data_file, "r", encoding="utf-8") as f:
                 data = json.load(f)
-                self.last_data = data
-                return data
-        except json.JSONDecodeError:
-            return self.last_data  # Retornar último dato válido
-        except Exception:
-            return {}
-
-
-# ==================== core/input_manager.py ====================
-"""
-Gestor de entradas de teclado
-"""
-
-import json
-import keyboard
-from config import Config
-
-
-class InputManager:
-    """Gestiona las teclas y entrada del teclado"""
-    
-    def __init__(self):
-        self.teclas = {}
-        self.load_controls()
-    
-    def load_controls(self):
-        """Carga las teclas desde controls.json"""
-        if not Config.CONTROLS_FILE.exists():
-            return
-        
-        try:
-            with open(Config.CONTROLS_FILE, "r", encoding="utf-8") as f:
-                controles = json.load(f)["Controls"][Config.JUGADOR_CONTROLADO]
+                
+            # Validar estructura básica
+            if not self._validate_data(data):
+                print("⚠️ Estructura de datos inválida en game_data.json")
+                return self.last_valid_data
             
-            self.teclas = {
-                "jump": controles["Movement"].get("Jump", "").lower(),
-                "left": controles["Movement"].get("Left", "").lower(),
-                "right": controles["Movement"].get("Right", "").lower(),
-                "cover": controles["Movement"].get("Cover up", "").lower(),
-                "punch": controles["Combat"].get("Punch", "").lower(),
-                "kick": controles["Combat"].get("Kick", "").lower(),
-                "charge": controles["Energy"].get("Charge", "").lower(),
-                "shot": controles["Energy"].get("Ki shot", "").lower(),
-                "tackle": controles["Energy"].get("Tackle", "").lower(),
-                "emote": controles.get("Emote", "").lower()
-            }
-        except Exception:
-            pass
+            # Datos válidos
+            self.last_valid_data = data
+            self.read_count += 1
+            self.error_count = 0  # Reset error counter
+            
+            return data
+            
+        except json.JSONDecodeError as e:
+            if self.error_count < 3:  # Evitar spam de errores
+                print(f"⚠️ Error de formato JSON: {e}")
+            self.error_count += 1
+            return self.last_valid_data
+            
+        except Exception as e:
+            if self.error_count < 3:
+                print(f"⚠️ Error al leer game_data.json: {e}")
+            self.error_count += 1
+            return self.last_valid_data
     
-    def get_pause_key(self):
-        """Retorna la tecla de pausa"""
-        if not Config.CONTROLS_FILE.exists():
-            return "enter"
+    def _validate_data(self, data):
+        """
+        Valida que los datos tengan la estructura esperada
         
-        try:
-            with open(Config.CONTROLS_FILE, "r", encoding="utf-8") as f:
-                datos = json.load(f)
-                return datos.get("Controls", {}).get("Others", {}).get("Pause", "ENTER").lower()
-        except:
-            return "enter"
-    
-    def press(self, key_name):
-        """Presiona una tecla"""
-        key = self.teclas.get(key_name)
-        if key:
-            keyboard.press(key)
-    
-    def release(self, key_name):
-        """Suelta una tecla"""
-        key = self.teclas.get(key_name)
-        if key:
-            keyboard.release(key)
-    
-    def press_and_release(self, key_name):
-        """Presiona y suelta una tecla"""
-        key = self.teclas.get(key_name)
-        if key:
-            keyboard.press_and_release(key)
-    
-    def release_all_keys(self):
-        """Suelta todas las teclas"""
-        for key in self.teclas.values():
-            keyboard.release(key)
-
-
-# ==================== core/state_manager.py ====================
-"""
-Gestor de estado del bot y del enemigo
-"""
-
-from dataclasses import dataclass, field
-from typing import Dict, Any
-
-
-@dataclass
-class PlayerState:
-    """Estado de un jugador"""
-    x: float = 0
-    y: float = 0
-    hit_x: float = 0
-    hit_y: float = 0
-    hitbox_x: float = 0
-    hitbox_y: float = 0
-    hp: float = 100
-    carga: float = 0
-    ki: int = 0
-    damaged: int = 0
-    defence: int = 0
-    speed: int = 0
-    transformado: bool = False
-    cap_form_actual: int = 0
-    cubriendose: bool = False
-    colision: bool = False
-    cantidad_transformaciones: int = 0
-    puede_transformarse: bool = False
-    maxima_transformacion: int = 0
-    forma_cheat: str = ""
-    puede_kaioken: str = ""
-    puede_timejump: bool = False
-    puede_teletransportarse: bool = False
-    clash_tackle: bool = False
-    estado_critico: bool = False
-    fase_actual: str = "base"
-    acciones: Dict[str, bool] = field(default_factory=dict)
-    
-    @classmethod
-    def from_dict(cls, data: Dict[str, Any]):
-        """Crea un PlayerState desde un diccionario"""
-        hit = data.get("hit", {})
-        hitbox = data.get("hitbox", {})
+        Args:
+            data: Diccionario con los datos del juego
+            
+        Returns:
+            bool: True si la estructura es válida
+        """
+        if not isinstance(data, dict):
+            return False
         
-        return cls(
-            x=data.get("x", 0),
-            y=data.get("y", 0),
-            hit_x=hit.get("x", 0),
-            hit_y=hit.get("y", 0),
-            hitbox_x=hitbox.get("x", 0),
-            hitbox_y=hitbox.get("y", 0),
-            hp=data.get("hp", 100),
-            carga=data.get("carga", 0),
-            ki=data.get("ki", 0),
-            damaged=data.get("damaged", 0),
-            defence=data.get("defence", 0),
-            speed=data.get("speed", 0),
-            transformado=data.get("transformado", False),
-            cap_form_actual=data.get("cap form actual", 0),
-            cubriendose=data.get("cubriendose", False),
-            colision=data.get("colision", False),
-            cantidad_transformaciones=data.get("cantidad de transformaciones", 0),
-            puede_transformarse=data.get("puede transformarse", False),
-            maxima_transformacion=data.get("Maxima transformacion", 0),
-            forma_cheat=data.get("Forma Cheat", ""),
-            puede_kaioken=data.get("puede usar kaioken", ""),
-            puede_timejump=data.get("puede usar timejump", False),
-            puede_teletransportarse=data.get("puede teletransportarse", False),
-            clash_tackle=data.get("ClashTackle", False),
-            estado_critico=data.get("estado critico", False),
-            fase_actual=data.get("fase actual", "base"),
-            acciones=data.get("acciones", {})
-        )
-
-
-class StateManager:
-    """Gestiona el estado del bot y del enemigo"""
+        # Verificar que existan jugador1 y jugador2
+        if "jugador1" not in data or "jugador2" not in data:
+            return False
+        
+        # Verificar campos mínimos necesarios
+        required_fields = ["x", "y", "hp", "carga"]
+        
+        for player in ["jugador1", "jugador2"]:
+            player_data = data.get(player, {})
+            if not isinstance(player_data, dict):
+                return False
+            
+            # Verificar campos requeridos
+            for field in required_fields:
+                if field not in player_data:
+                    return False
+        
+        return True
     
-    def __init__(self):
-        self.bot = PlayerState()
-        self.enemy = PlayerState()
+    def get_stats(self):
+        """Retorna estadísticas de lectura"""
+        return {
+            "reads": self.read_count,
+            "errors": self.error_count,
+            "has_valid_data": bool(self.last_valid_data)
+        }
     
-    def update(self, game_data: Dict[str, Any], controlled_player: str):
-        """Actualiza el estado basado en los datos del juego"""
-        if controlled_player == "Player 2":
-            self.bot = PlayerState.from_dict(game_data.get("jugador2", {}))
-            self.enemy = PlayerState.from_dict(game_data.get("jugador1", {}))
-        else:
-            self.bot = PlayerState.from_dict(game_data.get("jugador1", {}))
-            self.enemy = PlayerState.from_dict(game_data.get("jugador2", {}))
+    def reset_stats(self):
+        """Reinicia los contadores de estadísticas"""
+        self.read_count = 0
+        self.error_count = 0
