@@ -1,11 +1,11 @@
 {    
     "Performance": {
-        "Loading effects": false,
-        "Movement in background": false,
+        "Loading effects": true,
+        "Movement in background": true,
         "Shadows": true,
-        "Life bar animation": false,
-        "Energy bar animation": false,
-        "Char Effects": false,
+        "Life bar animation": true,
+        "Energy bar animation": true,
+        "Char Effects": true,
         "Explosions Effects": true,
         "Poor quality backgrounds": {
             "Eneable": false,
@@ -55,7 +55,7 @@
         "Rounds": 2,
         "Instant Transformation": true,
         "Flash effect": true,
-        "Bot": true,
+        "Bot": false,
         "Language": "English"
     }
 }

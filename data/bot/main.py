@@ -1,4 +1,4 @@
-import threading, time, keyboard
+import threading, time, keyboard, os
 from config import Config
 from core.game_reader import GameReader
 from core.input_manager import InputManager
@@ -81,7 +81,6 @@ class DBXWBot:
         self._special.handle_clash_tackle(bot)
 
     def loop(self):
-        print("Bot iniciado v2.0 (Lógica Original) - Presiona ESC para detener")
         pause_key = self._input.get_pause_key()
         
         while self._running:
@@ -100,7 +99,6 @@ class DBXWBot:
             
             try:
                 if keyboard.is_pressed("esc") or keyboard.is_pressed(pause_key):
-                    print("Deteniendo bot...")
                     self.stop()
                     break
             except:
@@ -116,7 +114,6 @@ class DBXWBot:
     def stop(self):
         self._running = False
         self._input.release_all_keys()
-        print("Bot detenido")
 
 def iniciar_bot():
     bot = DBXWBot()
@@ -124,6 +121,9 @@ def iniciar_bot():
     
     try:
         while bot._running:
+            if os.path.exists("stop.signal"):
+                os.remove("stop.signal")
+                break
             time.sleep(1)
     except KeyboardInterrupt:
         bot.stop()

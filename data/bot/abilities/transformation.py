@@ -1,5 +1,4 @@
-import time
-import threading
+import time, threading
 from config import Config
 from utils.constants import nivel_carga
 

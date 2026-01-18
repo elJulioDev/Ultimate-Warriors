@@ -1,5 +1,4 @@
-import json
-import keyboard
+import json, keyboard
 from config import Config
 
 class InputManager:

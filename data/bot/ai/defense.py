@@ -1,5 +1,4 @@
-import time
-import random
+import time, random
 from config import Config
 
 class DefenseAI:

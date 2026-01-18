@@ -1,18 +1,18 @@
 {    
     "jugador1": {
-        "x": 860,
-        "y": 301,
+        "x": 207,
+        "y": 221,
         "hit": {
-            "x": 862,
-            "y": 367
+            "x": 272,
+            "y": 292
         },
         "hitbox": {
-            "x": 893,
-            "y": 345
+            "x": 239,
+            "y": 265
         },
-        "hp": 44.2388235294118,
-        "carga": 282,
-        "ki": 3,
+        "hp": 45.0176470588235,
+        "carga": 106.2954,
+        "ki": 1,
         "damaged": 97,
         "defence": 17,
         "speed": 420,
@@ -36,27 +36,28 @@
         "puede teletransportarse": true,
         "ClashTackle": false,
         "estado critico": false,
-        "fase actual": "normal"
+        "fase actual": "normal",
+        "max hp": 100
     },
     "jugador2": {
-        "x": 860,
+        "x": 686,
         "y": 301,
         "hit": {
-            "x": 925,
-            "y": 367
+            "x": 688,
+            "y": 362
         },
         "hitbox": {
-            "x": 892,
+            "x": 720,
             "y": 345
         },
-        "hp": 100,
-        "carga": 86.99433,
-        "ki": 0,
-        "damaged": 111,
-        "defence": 26,
-        "speed": 500,
+        "hp": 68.0660784313725,
+        "carga": 102.9054,
+        "ki": 1,
+        "damaged": 107,
+        "defence": 22,
+        "speed": 445,
         "transformado": true,
-        "cap form actual": 4,
+        "cap form actual": 1,
         "cubriendose": false,
         "acciones": {
             "golpe": false,
@@ -66,15 +67,16 @@
             "cubrirse": false
         },
         "colision": false,
-        "cantidad de transformaciones": 2,
+        "cantidad de transformaciones": 5,
         "puede transformarse": true,
-        "Maxima transformacion": 7,
-        "Forma Cheat": "",
+        "Maxima transformacion": 6.5,
+        "Forma Cheat": "eu",
         "puede usar kaioken": "",
         "puede teletransportarse": true,
         "puede usar timejump": false,
         "ClashTackle": false,
         "estado critico": false,
-        "fase actual": "super"
+        "fase actual": "ssj",
+        "max hp": 100
     }
 }
