@@ -16,21 +16,6 @@ class CombatAI:
         self._last_combo_time = 0
 
     def precise_attack(self, bot, enemy):
-        if bot.cubriendose:
-            if self._attacking:
-                self._stop_attack()
-            return
-
-        if bot.damaged > 0:
-            if self._attacking:
-                self._stop_attack()
-            return
-            
-        if bot.acciones.get("cargando"):
-             if self._attacking:
-                self._stop_attack()
-             return
-        
         if enemy.cubriendose:
             if self._attacking:
                 self._stop_attack()
