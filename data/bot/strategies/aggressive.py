@@ -1,7 +1,6 @@
 import random
 from config import Config
 
-
 class AggressiveStrategy:
     __slots__ = ('_input', '_prediction', '_teleport', '_combo_count', '_last_combo')
     

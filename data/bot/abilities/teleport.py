@@ -1,7 +1,6 @@
 import time
 from config import Config
 
-
 class TeleportManager:
     __slots__ = ('_input', '_last_teleport', '_teleport_history', '_escape_mode')
     

@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-
 class Config:
     BASE_DIR = Path(__file__).parent.parent
     BOT_DIR = Path(__file__).parent
@@ -11,7 +10,7 @@ class Config:
     
     JUGADOR_CONTROLADO = "Player 2"
     
-    TICK_RATE = 0.05
+    TICK_RATE = 0.02
     
     RANGO_INICIO_X = 38
     RANGO_INICIO_Y = 45
@@ -32,10 +31,12 @@ class Config:
     
     MAX_CARGA = 282
     CHARGE_DISTANCE = 140
+    CHARGE_MIN_DISTANCE = 100
     
-    KI_SHOT_COOLDOWN = 0.1
+    KI_SHOT_COOLDOWN = 0.08
     KI_SHOT_ENERGY_REQUIRED = 25
     KI_SHOT_MIN_DISTANCE = 0
+    KI_SHOT_SPAM_COOLDOWN = 0.05
     
     TACKLE_COOLDOWN = 4.0
     TACKLE_ENERGY_REQUIRED = 188
@@ -43,6 +44,7 @@ class Config:
     
     TELEPORT_COOLDOWN = 0.3
     TELEPORT_ENERGY = 30
+    TELEPORT_EMERGENCY_COOLDOWN = 0.15
     
     TRANSFORM_COOLDOWN = 2.0
     
@@ -60,7 +62,11 @@ class Config:
     KAIOKEN_COOLDOWN = 15
     
     MAX_HISTORY = 16
-    PREDICT_TIME = 0.2
+    PREDICT_TIME = 0.15
     MAX_VEL = 1500
     VEL_EMA_ALPHA = 0.4
     MAX_PRED_MOVE = 200
+    
+    COMBO_DETECTION_HITS = 2
+    COMBO_DETECTION_TIME = 0.8
+    COMBO_ESCAPE_ENERGY = 25

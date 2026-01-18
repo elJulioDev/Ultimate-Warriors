@@ -1,7 +1,6 @@
 import json
 from config import Config
 
-
 class GameReader:
     __slots__ = ('_data_file', '_last_valid_data', '_error_count')
     

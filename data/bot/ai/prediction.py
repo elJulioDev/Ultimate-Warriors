@@ -1,7 +1,6 @@
 import time
 from config import Config
 
-
 class PredictionEngine:
     __slots__ = ('_position_history', '_velocity_history', '_last_prediction',
                  '_teleport_detected', '_last_teleport_check')

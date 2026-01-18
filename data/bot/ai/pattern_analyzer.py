@@ -1,7 +1,6 @@
 import time
 from collections import deque
 
-
 class PatternAnalyzer:
     __slots__ = ('_attack_patterns', '_movement_patterns', '_transform_patterns',
                  '_charge_patterns', '_last_analysis', '_behavior_score')

@@ -1,7 +1,6 @@
 import time
 from config import Config
 
-
 class AdaptiveStrategy:
     __slots__ = ('_pattern_analyzer', '_prediction', '_teleport', '_last_switch',
                  '_current_mode', '_performance_score', '_decision_history')

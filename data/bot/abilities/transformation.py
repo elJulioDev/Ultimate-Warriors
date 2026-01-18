@@ -1,18 +1,22 @@
 import time
+import threading
 from config import Config
 from utils.constants import nivel_carga
 
-
 class TransformationManager:
-    __slots__ = ('_input', '_last_transform', '_last_s_press')
+    __slots__ = ('_input', '_last_transform', '_last_s_press', '_is_transforming')
     
     def __init__(self, input_manager):
         self._input = input_manager
         self._last_transform = 0
         self._last_s_press = 0.0
+        self._is_transforming = False
     
+    def is_busy(self):
+        return self._is_transforming
+
     def transform_logic(self, bot, enemy, is_attacking):
-        if is_attacking:
+        if self._is_transforming or is_attacking:
             return
         
         ahora = time.time()
@@ -39,29 +43,100 @@ class TransformationManager:
         tipo_trans = self._select_type(bot, score)
         
         if tipo_trans:
-            self._execute(tipo_trans)
             self._last_transform = ahora
+            self._is_transforming = True
+            t = threading.Thread(target=self._execute_threaded, args=(tipo_trans,))
+            t.start()
     
+    def _execute_threaded(self, tipo):
+        """Ejecuta la secuencia de teclas en segundo plano"""
+        try:
+            time.sleep(0.05)
+            
+            ahora = time.time()
+            if ahora - self._last_s_press < Config.S_COOLDOWN:
+                time.sleep(Config.S_COOLDOWN)
+
+            self._input.press("cover")
+            time.sleep(0.08)
+            
+            if tipo == "secuencial":
+                self._input.press("punch")
+                time.sleep(0.25)
+                self._input.release("punch")
+            
+            elif tipo == "fase2":
+                self._input.press("left")
+                time.sleep(0.02)
+                self._input.press("punch")
+                time.sleep(0.25)
+                self._input.release("punch")
+                self._input.release("left")
+            
+            elif tipo == "fase3":
+                self._input.press("left")
+                time.sleep(0.02)
+                self._input.press("right")
+                time.sleep(0.02)
+                self._input.press("punch")
+                time.sleep(0.25)
+                self._input.release("punch")
+                self._input.release("right")
+                self._input.release("left")
+            
+            elif tipo == "fase4":
+                self._input.press("kick")
+                time.sleep(0.25)
+                self._input.release("kick")
+            
+            elif tipo == "fase5":
+                self._input.press("left")
+                time.sleep(0.02)
+                self._input.press("kick")
+                time.sleep(0.25)
+                self._input.release("kick")
+                self._input.release("left")
+            
+            elif tipo == "fase6":
+                self._input.press("left")
+                time.sleep(0.02)
+                self._input.press("shot")
+                time.sleep(0.25)
+                self._input.release("shot")
+                self._input.release("left")
+            
+            elif tipo == "cheat":
+                self._input.press("left")
+                time.sleep(0.02)
+                self._input.press("right")
+                time.sleep(0.02)
+                self._input.press("shot")
+                time.sleep(0.25)
+                self._input.release("shot")
+                self._input.release("right")
+                self._input.release("left")
+            
+            self._input.release("cover")
+            self._last_s_press = time.time()
+            
+        except Exception as e:
+            print(f"Error en transformación: {e}")
+        finally:
+            self._is_transforming = False
+
     def _calculate_score(self, bot, enemy):
         score = 0
-        
         if enemy.damaged > bot.damaged: score += 1
         if enemy.defence > bot.defence: score += 1
         if enemy.speed > bot.speed: score += 1
-        
         if bot.hp < 60 and enemy.hp > bot.hp: score += 2
-        
         if enemy.cap_form_actual > bot.cap_form_actual: score += 1.5
-        
         if enemy.forma_cheat and not bot.forma_cheat: score += 2
-        
         if bot.hp < 30: score += 2
-        
         hp_diff = enemy.hp - bot.hp
         if hp_diff > 30: score += 1
-        
         return score
-    
+
     def _select_type(self, bot, score):
         nivel = nivel_carga(bot.carga)
         costos = Config.COSTO_TRANSFORMACION
@@ -84,73 +159,4 @@ class TransformationManager:
             return "fase2"
         elif nivel >= costos["secuencial"]:
             return "secuencial"
-        
         return None
-    
-    def _execute(self, tipo):
-        ahora = time.time()
-        
-        if ahora - self._last_s_press < Config.S_COOLDOWN:
-            return
-        
-        self._input.press("cover")
-        time.sleep(0.08)
-        
-        if tipo == "secuencial":
-            self._input.press("punch")
-            time.sleep(0.25)
-            self._input.release("punch")
-        
-        elif tipo == "fase2":
-            self._input.press("left")
-            time.sleep(0.02)
-            self._input.press("punch")
-            time.sleep(0.25)
-            self._input.release("punch")
-            self._input.release("left")
-        
-        elif tipo == "fase3":
-            self._input.press("left")
-            time.sleep(0.02)
-            self._input.press("right")
-            time.sleep(0.02)
-            self._input.press("punch")
-            time.sleep(0.25)
-            self._input.release("punch")
-            self._input.release("right")
-            self._input.release("left")
-        
-        elif tipo == "fase4":
-            self._input.press("kick")
-            time.sleep(0.25)
-            self._input.release("kick")
-        
-        elif tipo == "fase5":
-            self._input.press("left")
-            time.sleep(0.02)
-            self._input.press("kick")
-            time.sleep(0.25)
-            self._input.release("kick")
-            self._input.release("left")
-        
-        elif tipo == "fase6":
-            self._input.press("left")
-            time.sleep(0.02)
-            self._input.press("shot")
-            time.sleep(0.25)
-            self._input.release("shot")
-            self._input.release("left")
-        
-        elif tipo == "cheat":
-            self._input.press("left")
-            time.sleep(0.02)
-            self._input.press("right")
-            time.sleep(0.02)
-            self._input.press("shot")
-            time.sleep(0.25)
-            self._input.release("shot")
-            self._input.release("right")
-            self._input.release("left")
-        
-        self._input.release("cover")
-        self._last_s_press = time.time()

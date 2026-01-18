@@ -2,7 +2,6 @@ import time
 import random
 from config import Config
 
-
 class SpecialMovesManager:
     __slots__ = ('_input', '_last_tackle', '_last_timejump', '_last_kaioken')
     

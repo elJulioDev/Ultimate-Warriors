@@ -1,4 +1,4 @@
-import threading, time, keyboard, random
+import threading, time, keyboard
 from config import Config
 from core.game_reader import GameReader
 from core.input_manager import InputManager
@@ -12,17 +12,13 @@ from abilities.transformation import TransformationManager
 from abilities.energy import EnergyManager
 from abilities.special_moves import SpecialMovesManager
 from abilities.teleport import TeleportManager
-from strategies.adaptive import AdaptiveStrategy
-from strategies.aggressive import AggressiveStrategy
-from strategies.defensive import DefensiveStrategy
-
+from abilities.combo_breaker import ComboBreaker
 
 class DBXWBot:
     __slots__ = ('_config', '_game_reader', '_input', '_state', 
                  '_combat', '_movement', '_defense', '_transform', 
                  '_energy', '_special', '_teleport', '_pattern', '_prediction',
-                 '_adaptive', '_aggressive', '_defensive_strat',
-                 '_running', '_last_tick', '_thread', '_enemy_prev_x')
+                 '_combo_breaker', '_running', '_last_tick', '_thread')
     
     def __init__(self):
         self._config = Config()
@@ -33,23 +29,21 @@ class DBXWBot:
         self._pattern = PatternAnalyzer()
         self._prediction = PredictionEngine()
         self._teleport = TeleportManager(self._input)
+        self._combo_breaker = ComboBreaker(self._input, self._teleport)
         
         self._combat = CombatAI(self._input)
         self._movement = MovementAI(self._input)
-        self._defense = DefenseAI(self._input, self._pattern, self._prediction, self._teleport)
+        
+        self._defense = DefenseAI(self._input, self._pattern, self._prediction, 
+                                   self._teleport, self._combo_breaker)
         
         self._transform = TransformationManager(self._input)
         self._energy = EnergyManager(self._input)
         self._special = SpecialMovesManager(self._input)
         
-        self._adaptive = AdaptiveStrategy(self._pattern, self._prediction, self._teleport)
-        self._aggressive = AggressiveStrategy(self._input, self._prediction, self._teleport)
-        self._defensive_strat = DefensiveStrategy(self._input, self._pattern, self._teleport)
-        
         self._running = False
         self._last_tick = 0
         self._thread = None
-        self._enemy_prev_x = None
     
     def update(self):
         game_data = self._game_reader.read()
@@ -57,23 +51,17 @@ class DBXWBot:
             return
         
         self._state.update(game_data)
-        
         bot = self._state.bot
         enemy = self._state.enemy
-        
-        self._pattern.analyze_movement_pattern(enemy, self._enemy_prev_x)
-        self._pattern.analyze_transformation(enemy)
-        self._pattern.analyze_charge_behavior(enemy)
-        self._pattern.update_behavior_score()
-        self._enemy_prev_x = enemy.x
-        
-        strategy_mode = self._adaptive.decide_strategy(bot, enemy)
-        distancia = abs(bot.x - enemy.x)
-        
+
+        self._prediction.update(enemy.x, enemy.y)
+        self._pattern.analyze_attack_pattern(bot, enemy)
+
         if self._defense.intelligent_dodge(bot, enemy):
-            return
-        
+            return 
+
         self._combat.precise_attack(bot, enemy)
+        
         is_attacking = self._combat.is_attacking()
 
         self._movement.strategic_movement(bot, enemy, is_attacking)
@@ -82,44 +70,18 @@ class DBXWBot:
         
         self._movement.jump_logic(bot, enemy)
         
-        if strategy_mode == 'aggressive':
-            if self._adaptive.should_use_ki_shot(bot, enemy, distancia):
-                self._energy.ki_shot_logic(bot, enemy)
-            
-            if random.random() < 0.1:
-                self._aggressive.attempt_combo(bot, enemy)
-                
-            if distancia > 100:
-                 self._aggressive.execute(bot, enemy, self._combat, self._movement, self._energy)
-
-        elif strategy_mode == 'defensive':
-            if self._defensive_strat.should_heal_opportunity(bot, enemy):
-                self._defensive_strat.execute_heal(bot)
-            
-            if self._defensive_strat.can_counter_safely(bot, enemy, distancia):
-                self._defensive_strat.counter_attack(bot, enemy)
-                
-            if random.random() < 0.05:
-                self._defensive_strat.bait_and_punish(bot, enemy)
-
-        else:
-            if self._adaptive.should_use_ki_shot(bot, enemy, distancia):
-                self._energy.ki_shot_logic(bot, enemy)
-
-        if self._adaptive.should_charge_energy(bot, enemy, distancia):
-            self._energy.charge_logic(bot, enemy)
-
-        if self._adaptive.should_transform(bot, enemy):
-            self._transform.transform_logic(bot, enemy, is_attacking)
-
-        self._special.handle_clash_tackle(bot)
+        self._energy.charge_logic(bot, enemy, is_being_comboed=False)
+        self._energy.ki_shot_logic(bot, enemy)
+        
+        self._transform.transform_logic(bot, enemy, is_attacking)
         self._special.tackle_logic(bot, enemy)
         self._special.timejump_logic(bot, enemy)
         self._special.kaioken_logic(bot, enemy)
+        
+        self._special.handle_clash_tackle(bot)
 
     def loop(self):
-        print("Bot iniciado - Presiona ESC para detener")
-        print(f"Modo inicial: {self._adaptive.get_current_mode()}")
+        print("Bot iniciado v2.0 (Lógica Original) - Presiona ESC para detener")
         pause_key = self._input.get_pause_key()
         
         while self._running:
@@ -134,7 +96,7 @@ class DBXWBot:
             try:
                 self.update()
             except Exception as e:
-                print(f"Error en update: {e}")
+                print(f"Error en loop: {e}")
             
             try:
                 if keyboard.is_pressed("esc") or keyboard.is_pressed(pause_key):
@@ -144,7 +106,7 @@ class DBXWBot:
             except:
                 pass
             
-            time.sleep(0.02)
+            time.sleep(0.001)
     
     def start(self):
         self._running = True
@@ -156,29 +118,7 @@ class DBXWBot:
         self._input.release_all_keys()
         print("Bot detenido")
 
-
-def mostrar_banner():
-    print("""
-╔══════════════════════════════════════════════════════════╗
-║               UW - AI Combat Bot v2.0.0                  ║
-╠══════════════════════════════════════════════════════════╣
-║ Proyect: Ultimate Warriors                               ║
-║ Autor: elJulioDev                                        ║
-║                                                          ║
-║ - Advanced Pattern Recognition System                    ║
-║ - Predictive Movement Analysis                           ║
-║ - Adaptive Strategy Selection                            ║
-║ - Enhanced Combat Intelligence                           ║
-║                                                          ║
-║  Press ESC or ENTER to stop the bot                      ║
-║                                                          ║
-║ © 2026 elJulioDev | Exclusive use for UW                 ║
-╚══════════════════════════════════════════════════════════╝
-""")
-
-
 def iniciar_bot():
-    mostrar_banner()
     bot = DBXWBot()
     bot.start()
     
@@ -187,7 +127,6 @@ def iniciar_bot():
             time.sleep(1)
     except KeyboardInterrupt:
         bot.stop()
-
 
 if __name__ == "__main__":
     iniciar_bot()

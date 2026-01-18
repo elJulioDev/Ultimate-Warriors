@@ -8,7 +8,6 @@ def nivel_carga(carga):
     else:
         return 3
 
-
 def calcular_stats(nivel_transformacion):
     return {
         "daño": 8 + 2 * nivel_transformacion,

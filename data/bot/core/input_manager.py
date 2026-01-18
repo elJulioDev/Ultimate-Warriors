@@ -2,7 +2,6 @@ import json
 import keyboard
 from config import Config
 
-
 class InputManager:
     __slots__ = ('keys', 'pause_key')
     

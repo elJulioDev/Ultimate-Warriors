@@ -2,23 +2,46 @@ import time
 import random
 from config import Config
 
-
 class DefenseAI:
-    __slots__ = ('_input', '_pattern', '_prediction', '_teleport', '_covering', 
-                 '_cover_start', '_last_cover', '_last_teleport')
+    __slots__ = ('_input', '_pattern', '_prediction', '_teleport', '_combo_breaker',
+                 '_covering', '_cover_start', '_last_cover', '_last_teleport',
+                 '_last_hp', '_hp_drop_counter')
     
-    def __init__(self, input_manager, pattern_analyzer, prediction_engine, teleport_manager):
+    def __init__(self, input_manager, pattern_analyzer, prediction_engine, 
+                 teleport_manager, combo_breaker):
         self._input = input_manager
         self._pattern = pattern_analyzer
         self._prediction = prediction_engine
         self._teleport = teleport_manager
+        self._combo_breaker = combo_breaker
         self._covering = False
         self._cover_start = 0
         self._last_cover = 0
         self._last_teleport = 0
+        self._last_hp = 100
+        self._hp_drop_counter = 0
 
     def intelligent_dodge(self, bot, enemy):
         ahora = time.time()
+        
+        current_hp = bot.hp
+        if current_hp < self._last_hp:
+            self._combo_breaker.register_hit()
+            self._hp_drop_counter += 1
+        else:
+            if ahora - self._last_cover > 0.5:
+                self._hp_drop_counter = 0
+        
+        self._last_hp = current_hp
+        
+        if self._combo_breaker.is_being_comboed():
+            if self._combo_breaker.try_escape(bot, enemy):
+                return True
+            
+            if self._hp_drop_counter > 3:
+                if self._combo_breaker.emergency_escape(bot, enemy):
+                    self._hp_drop_counter = 0
+                    return True
         
         self._pattern.analyze_attack_pattern(bot, enemy)
         self._prediction.update(enemy.x, enemy.y)
@@ -39,7 +62,7 @@ class DefenseAI:
         
         if atacando and distancia < 50:
             if self._teleport.can_teleport(bot):
-                if ahora - self._last_teleport > 0.2:
+                if ahora - self._last_teleport > Config.TELEPORT_EMERGENCY_COOLDOWN:
                     if self._teleport.execute_teleport(bot, enemy):
                         self._last_teleport = ahora
                         return True
@@ -119,3 +142,6 @@ class DefenseAI:
     
     def is_covering(self):
         return self._covering
+    
+    def is_being_comboed(self):
+        return self._combo_breaker.is_being_comboed()

@@ -2,7 +2,6 @@ import time
 import random
 from config import Config
 
-
 class DefensiveStrategy:
     __slots__ = ('_input', '_pattern', '_teleport', '_last_retreat', '_safe_distance',
                  '_last_counter', '_heal_attempts')
