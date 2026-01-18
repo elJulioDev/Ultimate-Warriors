@@ -1,23 +1,23 @@
 {    
     "jugador1": {
-        "x": 518,
-        "y": 301,
+        "x": 444,
+        "y": 227,
         "hit": {
-            "x": 521,
-            "y": 359
+            "x": 447,
+            "y": 307
         },
         "hitbox": {
-            "x": 551,
-            "y": 345
+            "x": 477,
+            "y": 271
         },
-        "hp": 17.1048841354723,
-        "carga": 228,
-        "ki": 2,
-        "damaged": 107,
-        "defence": 22,
-        "speed": 445,
-        "transformado": true,
-        "cap form actual": 1,
+        "hp": 47.068431372549,
+        "carga": 125.3854,
+        "ki": 1,
+        "damaged": 97,
+        "defence": 17,
+        "speed": 420,
+        "transformado": false,
+        "cap form actual": 0,
         "cubriendose": false,
         "acciones": {
             "golpe": false,
@@ -36,27 +36,27 @@
         "puede teletransportarse": true,
         "ClashTackle": false,
         "estado critico": false,
-        "fase actual": "ssj"
+        "fase actual": "normal"
     },
     "jugador2": {
-        "x": 183,
-        "y": 212,
+        "x": 587,
+        "y": 270,
         "hit": {
-            "x": 247,
-            "y": 286
+            "x": 590,
+            "y": 324
         },
         "hitbox": {
-            "x": 215,
-            "y": 255
+            "x": 620,
+            "y": 314
         },
-        "hp": 10.7061344537815,
-        "carga": 18,
+        "hp": 34.6105882352941,
+        "carga": 33.97512,
         "ki": 0,
-        "damaged": 113,
-        "defence": 28,
-        "speed": 520,
-        "transformado": true,
-        "cap form actual": 4,
+        "damaged": 97,
+        "defence": 17,
+        "speed": 420,
+        "transformado": false,
+        "cap form actual": 0,
         "cubriendose": false,
         "acciones": {
             "golpe": false,
@@ -75,6 +75,6 @@
         "puede usar timejump": false,
         "ClashTackle": false,
         "estado critico": false,
-        "fase actual": "god"
+        "fase actual": "normal"
     }
 }

@@ -1,10 +1,6 @@
-"""
-DBXW - AI Combat Bot v2.0.0
-Punto de entrada principal del bot
-Autor: elJulioQlo
-"""
-
-import threading, time, keyboard
+import threading
+import time
+import keyboard
 from config import Config
 from core.game_reader import GameReader
 from core.input_manager import InputManager
@@ -15,101 +11,85 @@ from ai.defense import DefenseAI
 from abilities.transformation import TransformationManager
 from abilities.energy import EnergyManager
 from abilities.special_moves import SpecialMovesManager
-from utils.logger import Logger
+
 
 class DBXWBot:
-    """Clase principal del bot que coordina todos los sistemas"""
+    __slots__ = ('_config', '_game_reader', '_input', '_state', 
+                 '_combat', '_movement', '_defense', '_transform', 
+                 '_energy', '_special', '_running', '_last_tick', '_thread')
     
     def __init__(self):
-        self.logger = Logger()
-        self.config = Config()
-        self.game_reader = GameReader()
-        self.input_manager = InputManager()
-        self.state_manager = StateManager()
+        self._config = Config()
+        self._game_reader = GameReader()
+        self._input = InputManager()
+        self._state = StateManager(self._config.JUGADOR_CONTROLADO)
         
-        # Sistemas de IA
-        self.combat_ai = CombatAI(self.input_manager, self.state_manager)
-        self.movement_ai = MovementAI(self.input_manager, self.state_manager)
-        self.defense_ai = DefenseAI(self.input_manager, self.state_manager)
+        self._combat = CombatAI(self._input)
+        self._movement = MovementAI(self._input)
+        self._defense = DefenseAI(self._input)
         
-        # Gestores de habilidades
-        self.transformation_mgr = TransformationManager(self.input_manager)
-        self.energy_mgr = EnergyManager(self.input_manager)
-        self.special_moves_mgr = SpecialMovesManager(self.input_manager)
+        self._transform = TransformationManager(self._input)
+        self._energy = EnergyManager(self._input)
+        self._special = SpecialMovesManager(self._input)
         
-        self.running = False
-        self.last_tick = 0
-        
-        self.logger.info("🤖 Bot inicializado correctamente")
+        self._running = False
+        self._last_tick = 0
+        self._thread = None
     
     def update(self):
-        """Actualización principal del bot (llamada cada tick)"""
-        # Leer datos del juego
-        game_data = self.game_reader.read()
+        game_data = self._game_reader.read()
         if not game_data:
             return
         
-        # Actualizar estado
-        self.state_manager.update(game_data, self.config.JUGADOR_CONTROLADO)
+        self._state.update(game_data)
         
-        # Obtener estado actual
-        bot_state = self.state_manager.bot
-        enemy_state = self.state_manager.enemy
+        bot = self._state.bot
+        enemy = self._state.enemy
         
-        # PRIORIDAD 1: Esquiva inteligente
-        if self.defense_ai.intelligent_dodge(bot_state, enemy_state):
-            return  # Si esquivó, skip otras acciones
+        if self._defense.intelligent_dodge(bot, enemy):
+            return
         
-        # PRIORIDAD 2: Ataque preciso
-        self.combat_ai.precise_attack(bot_state, enemy_state)
+        self._combat.precise_attack(bot, enemy)
         
-        # PRIORIDAD 3: Movimiento estratégico
-        self.movement_ai.strategic_movement(bot_state, enemy_state)
+        is_attacking = self._combat.is_attacking()
         
-        # PRIORIDAD 4: Defensa adaptativa
-        self.defense_ai.adaptive_strategy(bot_state, enemy_state)
+        self._movement.strategic_movement(bot, enemy, is_attacking)
         
-        # PRIORIDAD 5: Salto táctico
-        self.movement_ai.jump_logic(bot_state, enemy_state)
+        self._defense.adaptive_strategy(bot, enemy, is_attacking)
         
-        # PRIORIDAD 6: Gestión de energía
-        self.energy_mgr.charge_logic(bot_state, enemy_state)
-        self.energy_mgr.ki_shot_logic(bot_state, enemy_state)
+        self._movement.jump_logic(bot, enemy)
         
-        # PRIORIDAD 7: Habilidades especiales
-        self.transformation_mgr.transform_logic(bot_state, enemy_state)
-        self.special_moves_mgr.tackle_logic(bot_state, enemy_state)
-        self.special_moves_mgr.timejump_logic(bot_state, enemy_state)
-        self.special_moves_mgr.kaioken_logic(bot_state, enemy_state)
+        self._energy.charge_logic(bot, enemy)
+        self._energy.ki_shot_logic(bot, enemy)
         
-        # PRIORIDAD 8: Clash management
-        self.special_moves_mgr.handle_clash_tackle(bot_state)
+        self._transform.transform_logic(bot, enemy, is_attacking)
+        self._special.tackle_logic(bot, enemy)
+        self._special.timejump_logic(bot, enemy)
+        self._special.kaioken_logic(bot, enemy)
+        
+        self._special.handle_clash_tackle(bot)
     
     def loop(self):
-        """Loop principal del bot"""
-        self.logger.info("🎮 Bot iniciado - Presiona ESC para detener")
-        pause_key = self.input_manager.get_pause_key()
+        print("Bot iniciado - Presiona ESC para detener")
+        pause_key = self._input.get_pause_key()
         
-        while self.running:
+        while self._running:
             now = time.time()
             
-            # Control de tick rate
-            if now - self.last_tick < self.config.TICK_RATE:
+            if now - self._last_tick < self._config.TICK_RATE:
                 time.sleep(0.005)
                 continue
             
-            self.last_tick = now
+            self._last_tick = now
             
-            # Actualizar bot
             try:
                 self.update()
             except Exception as e:
-                self.logger.error(f"Error en update: {e}")
+                print(f"Error en update: {e}")
             
-            # Verificar tecla de salida
             try:
                 if keyboard.is_pressed("esc") or keyboard.is_pressed(pause_key):
-                    self.logger.info("⏹️ Deteniendo bot...")
+                    print("Deteniendo bot...")
                     self.stop()
                     break
             except:
@@ -118,20 +98,17 @@ class DBXWBot:
             time.sleep(0.02)
     
     def start(self):
-        """Inicia el bot en un hilo separado"""
-        self.running = True
-        self.thread = threading.Thread(target=self.loop, daemon=True)
-        self.thread.start()
+        self._running = True
+        self._thread = threading.Thread(target=self.loop, daemon=True)
+        self._thread.start()
         
     def stop(self):
-        """Detiene el bot"""
-        self.running = False
-        self.input_manager.release_all_keys()
-        self.logger.info("✅ Bot detenido correctamente")
+        self._running = False
+        self._input.release_all_keys()
+        print("Bot detenido")
 
 
 def mostrar_banner():
-    """Muestra el banner de inicio"""
     print("""
 ╔══════════════════════════════════════════════════════════╗
 ║               UW - AI Combat Bot v2.0.0                  ║
@@ -141,7 +118,6 @@ def mostrar_banner():
 ║                                                          ║
 ║ - New modular and scalable architecture                  ║
 ║ - Improved performance and maintainability               ║
-║ - Integrated logging system                              ║
 ║                                                          ║
 ║  Press ESC or ENTER to stop the bot                      ║
 ║                                                          ║
@@ -156,9 +132,8 @@ def iniciar_bot():
     bot = DBXWBot()
     bot.start()
     
-    # Mantener el programa vivo
     try:
-        while bot.running:
+        while bot._running:
             time.sleep(1)
     except KeyboardInterrupt:
         bot.stop()

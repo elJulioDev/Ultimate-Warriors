@@ -2,145 +2,126 @@ import time
 import random
 from config import Config
 
+
 class PatternAnalyzer:
-    """Sub-sistema para analizar patrones del enemigo"""
+    __slots__ = ('_attack_history',)
+    
     def __init__(self):
-        self.attack_history = []
+        self._attack_history = []
     
     def analyze(self, bot, enemy):
-        # Registrar ataque si ocurre
         if enemy.acciones.get("golpe") or enemy.acciones.get("patada"):
             distancia = abs(enemy.x - bot.x)
-            self.attack_history.append({
+            self._attack_history.append({
                 'time': time.time(),
                 'distance': distancia
             })
-            # Mantener solo los últimos 20
-            if len(self.attack_history) > 20:
-                self.attack_history.pop(0)
+            
+            if len(self._attack_history) > 20:
+                self._attack_history.pop(0)
     
     def predict_attack(self, current_distance):
-        if len(self.attack_history) < 3:
+        if len(self._attack_history) < 3:
             return False
         
-        recent_attacks = self.attack_history[-5:]
-        avg_dist = sum(a['distance'] for a in recent_attacks) / len(recent_attacks)
+        recent = self._attack_history[-5:]
+        avg_dist = sum(a['distance'] for a in recent) / len(recent)
         
-        # Si estamos cerca de la distancia promedio donde suele atacar
         return abs(current_distance - avg_dist) < 30
 
+
 class DefenseAI:
-    def __init__(self, input_manager, state_manager):
-        self.input_manager = input_manager
-        self.state_manager = state_manager
-        self.analyzer = PatternAnalyzer()
-        
-        # Estado defensa
-        self.covering = False
-        self.cover_start_time = 0
-        self.last_cover_time = 0
-        
-        # Estado teleport
-        self.last_teleport_time = 0
+    __slots__ = ('_input', '_analyzer', '_covering', '_cover_start', 
+                 '_last_cover', '_last_teleport')
+    
+    def __init__(self, input_manager):
+        self._input = input_manager
+        self._analyzer = PatternAnalyzer()
+        self._covering = False
+        self._cover_start = 0
+        self._last_cover = 0
+        self._last_teleport = 0
 
     def intelligent_dodge(self, bot, enemy):
-        """Sistema de esquiva predictiva y reactiva (Prioridad 1)"""
         ahora = time.time()
-        
-        # Actualizar análisis
-        self.analyzer.analyze(bot, enemy)
+        self._analyzer.analyze(bot, enemy)
         
         distancia = abs(bot.x - enemy.x)
-        atacando_enemigo = enemy.acciones.get("golpe") or enemy.acciones.get("patada")
-        disparando_enemigo = enemy.acciones.get("disparando")
+        atacando = enemy.acciones.get("golpe") or enemy.acciones.get("patada")
+        disparando = enemy.acciones.get("disparando")
         
-        # 1. ESQUIVA PREDICTIVA
-        if self.analyzer.predict_attack(distancia) and distancia < 70:
+        if self._analyzer.predict_attack(distancia) and distancia < 70:
             if self._try_teleport(bot, enemy, ahora):
                 return True
                 
-        # 2. ESQUIVA REACTIVA (Emergencia)
-        if atacando_enemigo and distancia < 50:
-            # Intentar teleport si el cooldown corto ha pasado
+        if atacando and distancia < 50:
             if bot.puede_teletransportarse and bot.carga >= Config.TELEPORT_ENERGY:
-                 if ahora - self.last_teleport_time > 0.2:
+                if ahora - self._last_teleport > 0.2:
                     if self._try_teleport(bot, enemy, ahora):
                         return True
 
-        # 3. ESQUIVA DE KI SHOTS
-        if disparando_enemigo and distancia > 80:
+        if disparando and distancia > 80:
             if random.random() < 0.6:
-                # Salto simple
-                self.input_manager.press("jump")
+                self._input.press("jump")
                 time.sleep(0.1)
-                self.input_manager.release("jump")
+                self._input.release("jump")
             else:
-                # Dash agresivo hacia el enemigo
                 direccion = "right" if enemy.x > bot.x else "left"
-                self.input_manager.press(direccion)
+                self._input.press(direccion)
                 time.sleep(0.15)
-                self.input_manager.release(direccion)
+                self._input.release(direccion)
                 
         return False
 
-    def adaptive_strategy(self, bot, enemy):
-        """Gestión de cobertura basada en HP"""
-        # Si el bot está atacando, no defenderse
-        if bot.acciones.get("golpe") or bot.acciones.get("patada"):
+    def adaptive_strategy(self, bot, enemy, is_attacking):
+        if is_attacking:
             return
 
         distancia = abs(enemy.x - bot.x)
         ahora = time.time()
-        enemigo_atacando = enemy.acciones.get("golpe") or enemy.acciones.get("patada") or enemy.acciones.get("disparando")
+        enemigo_atacando = (enemy.acciones.get("golpe") or 
+                           enemy.acciones.get("patada") or 
+                           enemy.acciones.get("disparando"))
 
         should_cover = False
 
-        # Lógica según HP
-        if bot.hp < 25: # CRITICO
-            # Huir
+        if bot.hp < 25:
             if distancia < 120:
                 dir_huida = "left" if bot.x > enemy.x else "right"
-                self.input_manager.press(dir_huida)
+                self._input.press(dir_huida)
                 time.sleep(0.1)
-                self.input_manager.release(dir_huida)
-            # Cubrir todo
+                self._input.release(dir_huida)
+            
             if distancia < 100 and enemigo_atacando:
                 should_cover = True
                 
-        elif bot.hp < 50: # BAJO
+        elif bot.hp < 50:
             if distancia < Config.DEFENSE_RANGE and enemigo_atacando:
                 should_cover = True
-                
-        else: # ALTO (Agresivo)
-            # Solo cubrir si está muy cerca y cooldown largo pasado
+        else:
             if distancia < Config.DEFENSE_RANGE and enemigo_atacando:
-                if ahora - self.last_cover_time > Config.COVER_COOLDOWN * 1.5:
+                if ahora - self._last_cover > Config.COVER_COOLDOWN * 1.5:
                     should_cover = True
 
-        # Ejecutar cobertura
-        if should_cover and not self.covering:
-            if ahora - self.last_cover_time > Config.COVER_COOLDOWN:
-                self.input_manager.press("cover")
-                self.covering = True
-                self.cover_start_time = ahora
+        if should_cover and not self._covering:
+            if ahora - self._last_cover > Config.COVER_COOLDOWN:
+                self._input.press("cover")
+                self._covering = True
+                self._cover_start = ahora
         
-        # Soltar cobertura
-        if self.covering:
-            # Si ya no atacan o pasó el tiempo máximo
-            if not enemigo_atacando or ahora - self.cover_start_time > Config.COVER_DURATION * 0.8:
-                self.input_manager.release("cover")
-                self.covering = False
-                self.last_cover_time = ahora
+        if self._covering:
+            if not enemigo_atacando or ahora - self._cover_start > Config.COVER_DURATION * 0.8:
+                self._input.release("cover")
+                self._covering = False
+                self._last_cover = ahora
 
     def _try_teleport(self, bot, enemy, ahora):
-        """Intenta ejecutar un teleport si hay recursos"""
         if bot.puede_teletransportarse and bot.carga >= Config.TELEPORT_ENERGY:
-            if ahora - self.last_teleport_time > Config.TELEPORT_COOLDOWN:
-                # Teleport hacia atrás o cruzado
+            if ahora - self._last_teleport > Config.TELEPORT_COOLDOWN:
                 direccion = "left" if bot.x > enemy.x else "right"
-                self.input_manager.press_and_release(direccion)
+                self._input.press_and_release(direccion)
                 time.sleep(0.05)
-                self.input_manager.press_and_release(direccion)
-                self.last_teleport_time = ahora
+                self._input.press_and_release(direccion)
+                self._last_teleport = ahora
                 return True
         return False
