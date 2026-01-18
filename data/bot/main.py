@@ -65,93 +65,58 @@ class DBXWBot:
         self._pattern.analyze_transformation(enemy)
         self._pattern.analyze_charge_behavior(enemy)
         self._pattern.update_behavior_score()
-        
         self._enemy_prev_x = enemy.x
         
         strategy_mode = self._adaptive.decide_strategy(bot, enemy)
+        distancia = abs(bot.x - enemy.x)
         
         if self._defense.intelligent_dodge(bot, enemy):
             return
         
-        if strategy_mode == 'aggressive':
-            self._execute_aggressive_mode(bot, enemy)
-        elif strategy_mode == 'defensive':
-            self._execute_defensive_mode(bot, enemy)
-        else:
-            self._execute_balanced_mode(bot, enemy)
-        
-        self._special.handle_clash_tackle(bot)
-    
-    def _execute_aggressive_mode(self, bot, enemy):
-        is_attacking = self._combat.is_attacking()
-        
-        if self._adaptive.should_attack(bot, enemy, abs(bot.x - enemy.x)):
-            self._combat.precise_attack(bot, enemy)
-        
-        self._movement.strategic_movement(bot, enemy, is_attacking)
-        
-        if self._adaptive.should_use_ki_shot(bot, enemy, abs(bot.x - enemy.x)):
-            self._energy.ki_shot_logic(bot, enemy)
-        
-        if random.random() < 0.1:
-            self._aggressive.attempt_combo(bot, enemy)
-        
-        self._movement.jump_logic(bot, enemy)
-        
-        if self._adaptive.should_transform(bot, enemy):
-            self._transform.transform_logic(bot, enemy, is_attacking)
-        
-        if self._adaptive.should_charge_energy(bot, enemy, abs(bot.x - enemy.x)):
-            self._energy.charge_logic(bot, enemy)
-        
-        self._special.tackle_logic(bot, enemy)
-        self._special.timejump_logic(bot, enemy)
-        self._special.kaioken_logic(bot, enemy)
-    
-    def _execute_defensive_mode(self, bot, enemy):
-        is_attacking = self._combat.is_attacking()
-        
-        self._defense.adaptive_strategy(bot, enemy, is_attacking)
-        
-        if self._defensive_strat.should_heal_opportunity(bot, enemy):
-            self._defensive_strat.execute_heal(bot)
-        
-        if self._defensive_strat.can_counter_safely(bot, enemy, abs(bot.x - enemy.x)):
-            self._defensive_strat.counter_attack(bot, enemy)
-        
-        self._defensive_strat.adaptive_defense(bot, enemy)
-        
-        self._movement.strategic_movement(bot, enemy, is_attacking)
-        self._movement.jump_logic(bot, enemy)
-        
-        if self._adaptive.should_charge_energy(bot, enemy, abs(bot.x - enemy.x)):
-            self._energy.charge_logic(bot, enemy)
-        
-        if self._adaptive.should_transform(bot, enemy):
-            self._transform.transform_logic(bot, enemy, is_attacking)
-        
-        if random.random() < 0.05:
-            self._defensive_strat.bait_and_punish(bot, enemy)
-    
-    def _execute_balanced_mode(self, bot, enemy):
-        is_attacking = self._combat.is_attacking()
-        
         self._combat.precise_attack(bot, enemy)
-        
+        is_attacking = self._combat.is_attacking()
+
         self._movement.strategic_movement(bot, enemy, is_attacking)
-        
+
         self._defense.adaptive_strategy(bot, enemy, is_attacking)
         
         self._movement.jump_logic(bot, enemy)
         
-        self._energy.charge_logic(bot, enemy)
-        self._energy.ki_shot_logic(bot, enemy)
-        
-        self._transform.transform_logic(bot, enemy, is_attacking)
+        if strategy_mode == 'aggressive':
+            if self._adaptive.should_use_ki_shot(bot, enemy, distancia):
+                self._energy.ki_shot_logic(bot, enemy)
+            
+            if random.random() < 0.1:
+                self._aggressive.attempt_combo(bot, enemy)
+                
+            if distancia > 100:
+                 self._aggressive.execute(bot, enemy, self._combat, self._movement, self._energy)
+
+        elif strategy_mode == 'defensive':
+            if self._defensive_strat.should_heal_opportunity(bot, enemy):
+                self._defensive_strat.execute_heal(bot)
+            
+            if self._defensive_strat.can_counter_safely(bot, enemy, distancia):
+                self._defensive_strat.counter_attack(bot, enemy)
+                
+            if random.random() < 0.05:
+                self._defensive_strat.bait_and_punish(bot, enemy)
+
+        else:
+            if self._adaptive.should_use_ki_shot(bot, enemy, distancia):
+                self._energy.ki_shot_logic(bot, enemy)
+
+        if self._adaptive.should_charge_energy(bot, enemy, distancia):
+            self._energy.charge_logic(bot, enemy)
+
+        if self._adaptive.should_transform(bot, enemy):
+            self._transform.transform_logic(bot, enemy, is_attacking)
+
+        self._special.handle_clash_tackle(bot)
         self._special.tackle_logic(bot, enemy)
         self._special.timejump_logic(bot, enemy)
         self._special.kaioken_logic(bot, enemy)
-    
+
     def loop(self):
         print("Bot iniciado - Presiona ESC para detener")
         print(f"Modo inicial: {self._adaptive.get_current_mode()}")
@@ -195,7 +160,7 @@ class DBXWBot:
 def mostrar_banner():
     print("""
 ╔══════════════════════════════════════════════════════════╗
-║               UW - AI Combat Bot v2.1.0                  ║
+║               UW - AI Combat Bot v2.0.0                  ║
 ╠══════════════════════════════════════════════════════════╣
 ║ Proyect: Ultimate Warriors                               ║
 ║ Autor: elJulioDev                                        ║
@@ -214,7 +179,6 @@ def mostrar_banner():
 
 def iniciar_bot():
     mostrar_banner()
-    
     bot = DBXWBot()
     bot.start()
     

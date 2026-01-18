@@ -1,18 +1,18 @@
 {    
     "jugador1": {
-        "x": 393,
-        "y": 76,
+        "x": 618,
+        "y": 296,
         "hit": {
-            "x": 396,
-            "y": 156
+            "x": 682,
+            "y": 370
         },
         "hitbox": {
-            "x": 426,
-            "y": 119
+            "x": 650,
+            "y": 340
         },
-        "hp": 72.9633137254902,
-        "carga": 86.22496,
-        "ki": 0,
+        "hp": 62.4447843137255,
+        "carga": 282,
+        "ki": 3,
         "damaged": 115,
         "defence": 30,
         "speed": 545,
@@ -26,7 +26,7 @@
             "disparando": false,
             "cubrirse": false
         },
-        "colision": false,
+        "colision": true,
         "cantidad de transformaciones": 6,
         "puede transformarse": true,
         "Maxima transformacion": 6,
@@ -39,33 +39,33 @@
         "fase actual": "blue"
     },
     "jugador2": {
-        "x": 381,
-        "y": 157,
+        "x": 633,
+        "y": 301,
         "hit": {
-            "x": 444,
-            "y": 208
+            "x": 635,
+            "y": 359
         },
         "hitbox": {
-            "x": 413,
-            "y": 200
+            "x": 666,
+            "y": 345
         },
-        "hp": 45.513101604278,
-        "carga": 66.36527,
-        "ki": 0,
-        "damaged": 107,
-        "defence": 22,
-        "speed": 445,
+        "hp": 28.8893277310924,
+        "carga": 282,
+        "ki": 3,
+        "damaged": 115,
+        "defence": 30,
+        "speed": 545,
         "transformado": true,
-        "cap form actual": 1,
+        "cap form actual": 5,
         "cubriendose": false,
         "acciones": {
             "golpe": false,
-            "patada": false,
+            "patada": true,
             "cargando": false,
             "disparando": false,
             "cubrirse": false
         },
-        "colision": false,
+        "colision": true,
         "cantidad de transformaciones": 5,
         "puede transformarse": true,
         "Maxima transformacion": 6.5,
@@ -75,6 +75,6 @@
         "puede usar timejump": false,
         "ClashTackle": false,
         "estado critico": false,
-        "fase actual": "ssj"
+        "fase actual": "blue"
     }
 }
