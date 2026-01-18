@@ -1,1 +1,73 @@
-First release
+[v1.0.1]
+[ES]
+# REGISTRO DE CAMBIOS - v1.0.1
+# Fecha: 18-01-2026
+
+[GENERAL]
+- Actualizacion mayor de arquitectura y logica de la IA.
+- Migracion completa de script unico a estructura modular escalable.
+
+[REFACTORIZACION Y ARQUITECTURA]
+- Reestructuracion completa: El archivo monolitico ScriptBot.py ha sido eliminado.
+- Nueva Estructura Modular (Carpeta bot/):
+  * core/: Manejo de bucle principal, lectura de memoria y gestion de estados.
+  * strategies/: Logica de toma de decisiones dividida en estilos (Agresivo, Defensivo, Adaptativo).
+  * ai/: Modulos de inteligencia avanzada (Prediccion, Analisis de Patrones).
+  * abilities/: Logica encapsulada para habilidades especificas y transformaciones.
+- Punto de entrada unificado: La ejecucion ahora se realiza exclusivamente a traves de bot/main.py.
+
+[INTEGRACION CON EL JUEGO]
+- Ejecucion Silenciosa: Cambio de python.exe a pythonw.exe para evitar ventanas de consola intrusivas.
+- Sistema de Apagado Seguro: Implementacion de señal stop.signal para cierre limpio.
+- Rutas Dinamicas: Compatibilidad mejorada con la macro AprPath.
+
+[MEJORAS EN INTELIGENCIA ARTIFICIAL]
+- Motor Estrategico Dinamico: La IA evalua el estado del juego para cambiar estrategias.
+- Analisis de Patrones: Deteccion de repeticiones en movimientos del oponente.
+- Prediccion de Movimiento: Algoritmos mejorados para anticipar la posicion enemiga.
+[/ES]
+
+[EN]
+# CHANGELOG - v1.0.1
+# Date: 2026-01-18
+
+[GENERAL]
+- Major update to architecture and AI logic.
+- Complete migration from single-script to scalable modular structure.
+
+[REFACTORING & ARCHITECTURE]
+- Complete Restructuring: The monolithic ScriptBot.py file has been deprecated.
+- New Modular Structure (bot/ folder):
+  * core/: Main loop handling, memory reading, and state management.
+  * strategies/: Decision-making logic split into styles (Aggressive, Defensive, Adaptive).
+  * ai/: Advanced intelligence modules (Prediction, Pattern Analysis).
+  * abilities/: Encapsulated logic for specific skills and transformations.
+- Unified Entry Point: Execution is now handled exclusively through bot/main.py.
+
+[GAME INTEGRATION]
+- Silent Execution: Switched to pythonw.exe to prevent intrusive console windows.
+- Graceful Shutdown System: Implemented stop.signal based shutdown.
+- Dynamic Paths: Improved compatibility with AprPath macro.
+
+[AI INTELLIGENCE UPGRADES]
+- Dynamic Strategy Engine: AI switches strategies based on game state.
+- Pattern Analyzer: Capability to detect opponent movement repetitions.
+- Movement Prediction: Improved algorithms to anticipate enemy position.
+[/EN]
+[/v1.0.1]
+
+[v1.0.0]
+[ES]
+# REGISTRO DE CAMBIOS - v1.0.0
+# Fecha: 17-11-2025
+
+- Primer lanzamiento.
+[/ES]
+
+[EN]
+# CHANGELOG - v1.0.0
+# Date: 2025-11-17
+
+- First release.
+[/EN]
+[/v1.0.0]
