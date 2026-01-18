@@ -1,23 +1,23 @@
 {    
     "jugador1": {
-        "x": 444,
-        "y": 227,
+        "x": 393,
+        "y": 76,
         "hit": {
-            "x": 447,
-            "y": 307
+            "x": 396,
+            "y": 156
         },
         "hitbox": {
-            "x": 477,
-            "y": 271
+            "x": 426,
+            "y": 119
         },
-        "hp": 47.068431372549,
-        "carga": 125.3854,
-        "ki": 1,
-        "damaged": 97,
-        "defence": 17,
-        "speed": 420,
-        "transformado": false,
-        "cap form actual": 0,
+        "hp": 72.9633137254902,
+        "carga": 86.22496,
+        "ki": 0,
+        "damaged": 115,
+        "defence": 30,
+        "speed": 545,
+        "transformado": true,
+        "cap form actual": 5,
         "cubriendose": false,
         "acciones": {
             "golpe": false,
@@ -35,28 +35,28 @@
         "puede usar timejump": false,
         "puede teletransportarse": true,
         "ClashTackle": false,
-        "estado critico": false,
-        "fase actual": "normal"
+        "estado critico": true,
+        "fase actual": "blue"
     },
     "jugador2": {
-        "x": 587,
-        "y": 270,
+        "x": 381,
+        "y": 157,
         "hit": {
-            "x": 590,
-            "y": 324
+            "x": 444,
+            "y": 208
         },
         "hitbox": {
-            "x": 620,
-            "y": 314
+            "x": 413,
+            "y": 200
         },
-        "hp": 34.6105882352941,
-        "carga": 33.97512,
+        "hp": 45.513101604278,
+        "carga": 66.36527,
         "ki": 0,
-        "damaged": 97,
-        "defence": 17,
-        "speed": 420,
-        "transformado": false,
-        "cap form actual": 0,
+        "damaged": 107,
+        "defence": 22,
+        "speed": 445,
+        "transformado": true,
+        "cap form actual": 1,
         "cubriendose": false,
         "acciones": {
             "golpe": false,
@@ -75,6 +75,6 @@
         "puede usar timejump": false,
         "ClashTackle": false,
         "estado critico": false,
-        "fase actual": "normal"
+        "fase actual": "ssj"
     }
 }
