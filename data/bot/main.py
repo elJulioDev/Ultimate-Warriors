@@ -18,7 +18,8 @@ class DBXWBot:
     __slots__ = ('_config', '_game_reader', '_input', '_state', 
                  '_combat', '_movement', '_defense', '_transform', 
                  '_energy', '_special', '_teleport', '_pattern', '_prediction',
-                 '_combo_breaker', '_running', '_last_tick', '_thread')
+                 '_combo_breaker', '_running', '_last_tick', '_thread',
+                 '_update_counter', '_pattern_update_interval', '_pause_key_pressed')
     
     def __init__(self):
         self._config = Config()
@@ -44,6 +45,10 @@ class DBXWBot:
         self._running = False
         self._last_tick = 0
         self._thread = None
+        
+        self._update_counter = 0
+        self._pattern_update_interval = 5
+        self._pause_key_pressed = False
     
     def update(self):
         game_data = self._game_reader.read()
@@ -55,7 +60,10 @@ class DBXWBot:
         enemy = self._state.enemy
 
         self._prediction.update(enemy.x, enemy.y)
-        self._pattern.analyze_attack_pattern(bot, enemy)
+        self._update_counter += 1
+        if self._update_counter >= self._pattern_update_interval:
+            self._pattern.analyze_attack_pattern(bot, enemy)
+            self._update_counter = 0
 
         if self._defense.intelligent_dodge(bot, enemy):
             return 
@@ -70,10 +78,11 @@ class DBXWBot:
         
         self._movement.jump_logic(bot, enemy)
         
-        self._energy.charge_logic(bot, enemy, is_being_comboed=False)
-        self._energy.ki_shot_logic(bot, enemy)
-        
-        self._transform.transform_logic(bot, enemy, is_attacking)
+        is_being_comboed = self._defense.is_being_comboed()
+        self._energy.charge_logic(bot, enemy, is_being_comboed)
+        self._energy.ki_shot_logic(bot, enemy, is_being_comboed=is_being_comboed)
+        if not self._transform.is_busy():
+            self._transform.transform_logic(bot, enemy, is_attacking)
         self._special.tackle_logic(bot, enemy)
         self._special.timejump_logic(bot, enemy)
         self._special.kaioken_logic(bot, enemy)
@@ -82,15 +91,12 @@ class DBXWBot:
 
     def loop(self):
         pause_key = self._input.get_pause_key()
+        sleep_time = self._config.TICK_RATE
+        
+        stop_keys = {'esc', pause_key}
         
         while self._running:
-            now = time.time()
-            
-            if now - self._last_tick < self._config.TICK_RATE:
-                time.sleep(0.005)
-                continue
-            
-            self._last_tick = now
+            frame_start = time.perf_counter()
             
             try:
                 self.update()
@@ -98,13 +104,25 @@ class DBXWBot:
                 print(f"Error en loop: {e}")
             
             try:
-                if keyboard.is_pressed("esc") or keyboard.is_pressed(pause_key):
-                    self.stop()
-                    break
+                for key in stop_keys:
+                    if keyboard.is_pressed(key):
+                        if not self._pause_key_pressed:
+                            self._pause_key_pressed = True
+                            self.stop()
+                            return
+                    else:
+                        self._pause_key_pressed = False
             except:
                 pass
             
-            time.sleep(0.001)
+            elapsed = time.perf_counter() - frame_start
+            remaining = sleep_time - elapsed
+            
+            if remaining > 0:
+                time.sleep(remaining * 0.9)
+                
+                while time.perf_counter() - frame_start < sleep_time:
+                    pass
     
     def start(self):
         self._running = True
@@ -114,18 +132,35 @@ class DBXWBot:
     def stop(self):
         self._running = False
         self._input.release_all_keys()
+        self._game_reader.close()
 
 def iniciar_bot():
     bot = DBXWBot()
+    
+    try:
+        import sys
+        if sys.platform == 'win32':
+            import psutil
+            p = psutil.Process(os.getpid())
+            p.nice(psutil.BELOW_NORMAL_PRIORITY_CLASS)
+    except:
+        pass
+    
     bot.start()
+    
+    signal_file = "stop.signal"
+    check_interval = 0.5
     
     try:
         while bot._running:
-            if os.path.exists("stop.signal"):
-                os.remove("stop.signal")
+            if os.path.exists(signal_file):
+                os.remove(signal_file)
+                bot.stop()
                 break
-            time.sleep(1)
+            time.sleep(check_interval)
     except KeyboardInterrupt:
+        bot.stop()
+    finally:
         bot.stop()
 
 if __name__ == "__main__":

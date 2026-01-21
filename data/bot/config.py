@@ -10,7 +10,7 @@ class Config:
     
     JUGADOR_CONTROLADO = "Player 2"
     
-    TICK_RATE = 0.02
+    TICK_RATE = 0.016
     
     RANGO_INICIO_X = 38
     RANGO_INICIO_Y = 45
@@ -70,3 +70,20 @@ class Config:
     COMBO_DETECTION_HITS = 2
     COMBO_DETECTION_TIME = 0.8
     COMBO_ESCAPE_ENERGY = 25
+    
+    PATTERN_ANALYSIS_INTERVAL = 5
+    MEMORY_CLEANUP_INTERVAL = 100
+    
+    USE_PERFORMANCE_MODE = True
+    ENABLE_PROFILING = False
+    
+    @classmethod
+    def get_adaptive_tick_rate(cls, cpu_usage):
+        if not cls.USE_PERFORMANCE_MODE:
+            return cls.TICK_RATE
+        
+        if cpu_usage > 80:
+            return cls.TICK_RATE * 1.5
+        elif cpu_usage < 30:
+            return cls.TICK_RATE * 0.8
+        return cls.TICK_RATE
