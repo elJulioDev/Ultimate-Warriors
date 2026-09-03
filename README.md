@@ -1,3 +1,8 @@
+<p align="center">
+  <a href="README.md"><img src="https://img.shields.io/badge/Language-English-blue?style=for-the-badge" alt="English"></a>
+  <a href="README_ES.md"><img src="https://img.shields.io/badge/Idioma-Español-red?style=for-the-badge" alt="Español"></a>
+</p>
+
 # Ultimate Warriors
 
 ### Dragon Ball 2D Fighting Game in PowerPoint
