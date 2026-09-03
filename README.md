@@ -86,7 +86,7 @@ A full-featured 2D fighting game built entirely in PowerPoint using VBA. Complet
 ## Project Structure
 
 ```
-Ultimate-Warriors-master/
+Ultimate-Warriors/
 ├── Game.ppsm                    # Main PowerPoint game (macro-enabled)
 ├── README.md
 ├── requirements.txt             # Python dependencies
@@ -103,44 +103,62 @@ Ultimate-Warriors-master/
 │
 ├── sound/                       # 25 MP3 music tracks
 ├── font/                        # Custom fonts (HUD display)
+│   ├── Great Fighter Demo.otf
+│   ├── Great Fighter Demo.ttf
+│   ├── PIZZADUDEPOINTERS.ttf
+│   └── Super Squad.ttf
 │
 ├── data/
-│   ├── version.data             # Version: 1.0.1
+│   ├── version.data             # Version info
+│   ├── Changelog.txt            # Changelog
+│   ├── Controls.json            # Control mappings
+│   ├── Language.json            # Bilingual localization (ES/EN)
+│   ├── Settings.json            # Game settings
 │   ├── style.css                # Sprite gallery UI
+│   ├── index.js                 # Gallery logic
+│   ├── index_credits.html       # Credits page
+│   ├── icon.ico                 # App icon
+│   ├── icon.png                 # App icon (PNG)
 │   ├── sound_effects/           # 44 WAV/MP3 SFX files
 │   ├── resources/
 │   │   ├── CharEffects/         # 106 aura/effect PNG sprites
 │   │   ├── GameEffects/         # 46 explosion/blizzard PNG sprites
-│   │   └── menu/                # Menu backgrounds
+│   │   ├── menu/
+│   │   │   ├── Anim/            # Menu animations
+│   │   │   ├── credits.png
+│   │   │   ├── main.png
+│   │   │   ├── selection.png
+│   │   │   └── settings.png
+│   │   ├── coconut.png
+│   │   ├── ico_char_null.png
+│   │   ├── null.png
+│   │   └── pre_stage_null.png
 │   └── bot/                     # Python AI bot (modular)
-│       ├── main.py, config.py
+│       ├── main.py
+│       ├── config.py
 │       ├── core/
+│       │   ├── game_reader.py
+│       │   ├── input_manager.py
+│       │   └── state_manager.py
 │       ├── strategies/
+│       │   ├── adaptive.py
+│       │   ├── aggressive.py
+│       │   └── defensive.py
 │       ├── ai/
-│       └── abilities/
-│
-└── proyecto/                    # VBA source modules (exported .txt)
-    ├── Slide1.txt               # Main menu
-    ├── Slide11.txt              # Character selection (1083 lines)
-    ├── Slide14.txt              # Stage selection (377 lines)
-    ├── Slide19.txt              # Main game loop (263 lines)
-    ├── Slide21.txt              # Loading/resource setup (988 lines)
-    ├── Slide24.txt              # Kamehameha simulation
-    ├── CombinationSystem.txt    # Input buffer/combo detection
-    ├── Definicion.txt           # Project documentation
-    ├── Modulos/
-    │   ├── dbxwCore.txt         # CORE ENGINE (4000+ lines)
-    │   ├── BetterVB.txt         # Utility library (1462+ lines)
-    │   ├── Char_Data.txt        # Character data variables
-    │   ├── JSONVBA.txt          # JSON parser/serializer
-    │   ├── Settings.txt         # Settings loader + bot launcher
-    │   ├── DataKey.txt          # Input key mapping
-    │   ├── Stage_Data.txt       # Stage data variables
-    │   ├── SystemMusic.txt      # Music selection
-    │   └── controls.txt         # SFX selection, UI sounds
-    └── Modulos de Clase/
-        ├── Sprites.txt          # Sprite animation + caching
-        └── List.txt             # Array/list class (v1.4.4)
+│       │   ├── combat.py
+│       │   ├── defense.py
+│       │   ├── movement.py
+│       │   ├── pattern_analyzer.py
+│       │   └── prediction.py
+│       ├── abilities/
+│       │   ├── combo_breaker.py
+│       │   ├── energy.py
+│       │   ├── special_moves.py
+│       │   ├── teleport.py
+│       │   └── transformation.py
+│       └── utils/
+│           ├── constants.py
+│           └── helpers.py
 ```
 
 ---

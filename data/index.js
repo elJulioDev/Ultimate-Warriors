@@ -35,7 +35,7 @@ const CREDITS = {
         "ssj": [["SonGoku0911", "https://www.deviantart.com/songoku0911/art/Super-Saiyan-Bardock-ULSW-Sprite-Sheet-956079615"]]
     },
     "Cell": {
-        "perfect": [["Strice12", "https://www.deviantart.com/strice12/art/Cell-perfecto-and-super-perfecto-sheet-sprite-ulsw-1051526757"]]
+        "Perfect": [["Strice12", "https://www.deviantart.com/strice12/art/Cell-perfecto-and-super-perfecto-sheet-sprite-ulsw-1051526757"]]
     },
     "Freezer": {
         "normal": [["GaminXArchie", "https://www.deviantart.com/gaminxarchie/art/Freezer-Final-form-Sprite-Sheet-ULSW-990720911"]],
@@ -45,16 +45,16 @@ const CREDITS = {
     "Broly": {
         "rage": [["BlackSanYT", "https://www.deviantart.com/blacksanyt/art/Ikari-Broly-SwlPlus-Sprite-Sheet-1025381597"]],
         "ssj": [["JustOruma", "https://www.deviantart.com/justoruma/art/Broly-ssj-SWL-sprite-sheet-796771834"]],
-        "ssfp": [["JustOruma", "https://www.deviantart.com/justoruma/art/Broly-Full-Power-SWL-Sprite-Sheet-811840836"]]
+        "SSFP": [["JustOruma", "https://www.deviantart.com/justoruma/art/Broly-Full-Power-SWL-Sprite-Sheet-811840836"]]
     },
     "Black": {
         "normal": [["Omegasuper", "https://www.deviantart.com/omegasuper/art/Black-Goku-ULSW-799497391"]],
         "rose": [["AldetSkywalker", "https://www.deviantart.com/aldetskywalker/art/SsRose-Goku-Black-Ultimate-Lsw-Sheet-842527115"]]
     },
     "Piccolo": {
-        "Base": [["JeffSonYT", "https://www.deviantart.com/jeffsonyt/art/Ultimate-Piccolo-Ulsw-Extended-Sheet-1030904649"]],
-        "Super": [["JeffSonYT", "https://www.deviantart.com/jeffsonyt/art/Ultimate-Piccolo-Ulsw-Extended-Sheet-1030904649"]],
-        "Orange": [["MatheusAnimaa", "https://www.deviantart.com/matheusanimaa/art/Orange-Piccolo-SWL-sprite-sheet-1185984785"]]
+        "base": [["JeffSonYT", "https://www.deviantart.com/jeffsonyt/art/Ultimate-Piccolo-Ulsw-Extended-Sheet-1030904649"]],
+        "super": [["JeffSonYT", "https://www.deviantart.com/jeffsonyt/art/Ultimate-Piccolo-Ulsw-Extended-Sheet-1030904649"]],
+        "orange": [["MatheusAnimaa", "https://www.deviantart.com/matheusanimaa/art/Orange-Piccolo-SWL-sprite-sheet-1185984785"]]
     },
     "Trunks": {
         "base": [["Dryy7", "https://www.deviantart.com/dryy7/art/Trunks-Future-Base-Ssj-Ssj2-Sprite-Sheet-ULSW-943430724"]],
@@ -115,7 +115,7 @@ const CREDITS = {
     },
     "Zamasu":{
         "base": [["breckhhh", "https://www.deviantart.com/breckhhh/art/Zamasu-no-gattai-ulsw-sprite-sheet-895182187"]],
-        "Corrupted": [["breckhhh", "https://www.deviantart.com/breckhhh/art/Zamasu-no-gattai-ulsw-sprite-sheet-895182187"]]
+        "corrupted": [["breckhhh", "https://www.deviantart.com/breckhhh/art/Zamasu-no-gattai-ulsw-sprite-sheet-895182187"]]
     }
 };
 
