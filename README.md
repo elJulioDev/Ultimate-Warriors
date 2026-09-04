@@ -173,35 +173,35 @@ Ultimate-Warriors/
 | Character | Base Form | Transformations | Special Abilities |
 |-----------|-----------|-----------------|-------------------|
 | Goku | Normal | SSJ, SSJ2, SSJ3, God, Blue, UI (6 phases) | MUI, Kaioken x4, Teleport, Dodge |
-| Vegeta | Normal | SSJ, SSJ2, God, Blue, Blue Evolution (5+ phases) | Ultra Ego, Teleport |
-| Gohan | - | - | - |
-| Kid Gohan | - | - | - |
-| Piccolo | - | - | - |
-| Vegetto | - | - | - |
-| Gogeta | - | - | - |
-| Gotenks | - | - | - |
-| Trunks | - | - | - |
-| Bardock | - | - | - |
+| Vegeta | Normal | SSJ, SSJ2, God, Blue, Blue Evolution (5+ phases, decimal 6.5) | Ultra Ego, Teleport |
+| Gohan | Base | SSJ, Ultimate, Beast (3 phases) | Fast Charge, Teleport |
+| Kid Gohan | SSJ2 | - | Teleport, Fast Charge |
+| Piccolo | Base | Super, Orange (2 phases) | Teleport, Updim (phase 7) |
+| Vegetto | Blue | - | Teleport, Fast Charge |
+| Gogeta | Blue | - | Teleport, Fast Charge |
+| Gotenks | SSJ3 | - | Teleport, Fast Charge |
+| Trunks | Base | SSJ, SSJ2 (2 phases) | FixK, Teleport |
+| Bardock | Base | SSJ (1 phase) | Teleport |
 | Broly | Rage | SSJ (phase 4) | Updim, SSFP, No Form Back, Teleport |
 | Freezer | Normal | Golden (phase 5) | Black, Teleport |
 | Cell | Perfect | - | Teleport |
-| Cooler | - | - | - |
-| Android 17 | - | - | - |
-| Android 18 | - | - | - |
-| Android 21 | - | - | - |
-| Kid Buu | - | - | - |
-| Super Buu (Gohan) | - | - | - |
-| Hit | - | - | - |
+| Cooler | Base | Final (phase 1) | Teleport, Updim (phase 1), Fast Charge |
+| Android 17 | Base | - | Android, Teleport, Fast Charge |
+| Android 18 | Base | - | Android, Teleport |
+| Android 21 | Base | - | Teleport, RecoverLife=1 |
+| Kid Buu | Base | - | Teleport, Fast Charge, FixK, RecoverLife=1 |
+| Super Buu (Gohan) | Base | - | Teleport, Fast Charge, RecoverLife=1 |
+| Hit | Base | - | Teleport, TimeJump |
 | Jiren | Normal | Full Power (phase 2) | Teleport, No Form Back, Fast Charge |
-| Kefla | - | - | - |
+| Kefla | LSSJ | - (disabled) | Teleport, Fast Charge |
 | Beerus | Base | - | Teleport, Fast Charge, Accuracy |
-| Zamasu | - | - | - |
-| Black | - | - | - |
-| Janemba | - | - | - |
-| Moro | - | - | - |
-| Granola | - | - | - |
-| Videl | - | - | - |
-| Alex | Normal | SSJ, God, Blue | Fast Charge, Teleport, Kaioken x4, Ultra Ego |
+| Zamasu | Base | Corrupted (phase 1) | Teleport, Fast Charge, Updim (phase 1), No Form Back |
+| Black | Normal | SSJ, Rose (2 phases) | Teleport |
+| Janemba | Base | - | Teleport, Fast Charge |
+| Moro | Base | - (disabled) | Fast Charge, Teleport |
+| Granola | Base | - | Teleport, Accuracy, Fast Charge |
+| Videl | Base | - | Teleport |
+| Alex | Normal | SSJ, God, Blue (3 phases) | Fast Charge, Teleport, Kaioken x4, Ultra Ego |
 
 ---
 

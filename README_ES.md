@@ -172,36 +172,36 @@ Ultimate-Warriors/
 
 | Personaje | Forma Base | Transformaciones | Habilidades Especiales |
 |-----------|-----------|-----------------|-------------------|
-| Goku | Normal | SSJ, SSJ2, SSJ3, God, Blue, UI (6 fases) | MUI, Kaioken x4, Teletransporte, Esquivar |
-| Vegeta | Normal | SSJ, SSJ2, God, Blue, Blue Evolution (5+ fases) | Ultra Ego, Teletransporte |
-| Gohan | - | - | - |
-| Gohan Niño | - | - | - |
-| Piccolo | - | - | - |
-| Vegetto | - | - | - |
-| Gogeta | - | - | - |
-| Gotenks | - | - | - |
-| Trunks | - | - | - |
-| Bardock | - | - | - |
-| Broly | Rage | SSJ (fase 4) | Updim, SSFP, Sin Forma Trasera, Teletransporte |
-| Freezer | Normal | Golden (fase 5) | Black, Teletransporte |
-| Cell | Perfect | - | Teletransporte |
-| Cooler | - | - | - |
-| Android 17 | - | - | - |
-| Android 18 | - | - | - |
-| Android 21 | - | - | - |
-| Kid Buu | - | - | - |
-| Super Buu (Gohan) | - | - | - |
-| Hit | - | - | - |
-| Jiren | Normal | Full Power (fase 2) | Teletransporte, Sin Forma Trasera, Carga Rápida |
-| Kefla | - | - | - |
-| Beerus | Base | - | Teletransporte, Carga Rápida, Precisión |
-| Zamasu | - | - | - |
-| Black | - | - | - |
-| Janemba | - | - | - |
-| Moro | - | - | - |
-| Granola | - | - | - |
-| Videl | - | - | - |
-| Alex | Normal | SSJ, God, Blue | Carga Rápida, Teletransporte, Kaioken x4, Ultra Ego |
+| Goku | Normal | SSJ, SSJ2, SSJ3, God, Blue, UI (6 fases) | MUI, Kaioken x4, Teleport, Dodge |
+| Vegeta | Normal | SSJ, SSJ2, God, Blue, Blue Evolution (5+ fases, decimal 6.5) | Ultra Ego, Teleport |
+| Gohan | Base | SSJ, Ultimate, Beast (3 fases) | Fast Charge, Teleport |
+| Gohan Niño | SSJ2 | - | Teleport, Fast Charge |
+| Piccolo | Base | Super, Orange (2 fases) | Teleport, Updim (fase 7) |
+| Vegetto | Blue | - | Teleport, Fast Charge |
+| Gogeta | Blue | - | Teleport, Fast Charge |
+| Gotenks | SSJ3 | - | Teleport, Fast Charge |
+| Trunks | Base | SSJ, SSJ2 (2 fases) | FixK, Teleport |
+| Bardock | Base | SSJ (1 fase) | Teleport |
+| Broly | Rage | SSJ (fase 4) | Updim, SSFP, noformback, Teleport |
+| Freezer | Normal | Golden (fase 5) | Black, Teleport |
+| Cell | Perfect | - | Teleport |
+| Cooler | Base | Final (fase 1) | Teleport, Updim (fase 1), Fast Charge |
+| Android 17 | Base | - | Android, Teleport, Fast Charge |
+| Android 18 | Base | - | Android, Teleport |
+| Android 21 | Base | - | Teleport, RecoverLife=1 |
+| Kid Buu | Base | - | Teleport, Fast Charge, FixK, RecoverLife=1 |
+| Super Buu (Gohan) | Base | - | Teleport, Fast Charge, RecoverLife=1 |
+| Hit | Base | - | Teleport, TimeJump |
+| Jiren | Normal | Full Power (fase 2) | Teleport, noformback, Fast Charge |
+| Kefla | LSSJ | - (deshabilitado) | Teleport, Fast Charge |
+| Beerus | Base | - | Teleport, Fast Charge, Accuracy |
+| Zamasu | Base | Corrupted (fase 1) | Teleport, Fast Charge, Updim (fase 1), noformback |
+| Black | Normal | SSJ, Rose (2 fases) | Teleport |
+| Janemba | Base | - | Teleport, Fast Charge |
+| Moro | Base | - (deshabilitado) | Fast Charge, Teleport |
+| Granola | Base | - | Teleport, Accuracy, Fast Charge |
+| Videl | Base | - | Teleport |
+| Alex | Normal | SSJ, God, Blue (3 fases) | Fast Charge, Teleport, Kaioken x4, Ultra Ego |
 
 ---
 
