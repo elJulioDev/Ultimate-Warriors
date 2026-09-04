@@ -961,8 +961,8 @@ Then install fonts (right-click fonts in `/font` folder, select "Install for all
 
 Want to create your own custom character? See the full guide:
 
-- **[Character Creation Guide (English)](Character_creation_guide.md)**
-- **[Guía para Crear un Personaje (Español)](Character_creation_guide_ES.md)**
+- **[Character Creation Guide (English)](docs/Character_creation_guide.md)**
+- **[Guía para Crear un Personaje (Español)](docs/Character_creation_guide_ES.md)**
 
 ---
 

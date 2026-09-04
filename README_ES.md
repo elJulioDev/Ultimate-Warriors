@@ -960,8 +960,8 @@ Luego instala las fuentes (clic derecho en las fuentes de la carpeta `/font`, se
 
 ¿Quieres crear tu propio personaje personalizado? Consulta la guía completa:
 
-- **[Character Creation Guide (English)](Character_creation_guide.md)**
-- **[Guía para Crear un Personaje (Español)](Character_creation_guide_ES.md)**
+- **[Character Creation Guide (English)](docs/Character_creation_guide.md)**
+- **[Guía para Crear un Personaje (Español)](docs/Character_creation_guide_ES.md)**
 
 ---
 
