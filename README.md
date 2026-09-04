@@ -957,6 +957,15 @@ Then install fonts (right-click fonts in `/font` folder, select "Install for all
 
 ---
 
+## Character Creation
+
+Want to create your own custom character? See the full guide:
+
+- **[Character Creation Guide (English)](Character_creation_guide.md)**
+- **[Guía para Crear un Personaje (Español)](Character_creation_guide_ES.md)**
+
+---
+
 ## License
 
 This project is a Dragon Ball fan game made with love for the community.

@@ -956,6 +956,15 @@ Luego instala las fuentes (clic derecho en las fuentes de la carpeta `/font`, se
 
 ---
 
+## Creación de Personajes
+
+¿Quieres crear tu propio personaje personalizado? Consulta la guía completa:
+
+- **[Character Creation Guide (English)](Character_creation_guide.md)**
+- **[Guía para Crear un Personaje (Español)](Character_creation_guide_ES.md)**
+
+---
+
 ## Licencia
 
 Este proyecto es un juego fan de Dragon Ball hecho con amor para la comunidad.
