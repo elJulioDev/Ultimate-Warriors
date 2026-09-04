@@ -273,11 +273,12 @@ A character without transformations:
 
 - **`eneable`** (Boolean, required): Enables/disables the transformation system
 - **`phase N`** (String): Subfolder name for each transformation phase
-- **Phases go from 1 to 7** (phase 7 = cheat form)
+- **Infinite transformations** — The engine supports unlimited phases (not limited to 6 or 7)
 - **You can skip phases** — Vegeta uses phase 1, 2, 4, 5, 6.5 (no phase 3)
 - **Supports decimals** — `"phase 6.5": "blue_ev"` works
+- **Maxform (cheat)** — The cheat form (MUI, UE, BLACK, SSFP) becomes the final form in the transformation chain
 
-**Usage examples:**
+**Examples:**
 
 | Character | Phases | Notes |
 |-----------|--------|-------|
@@ -285,7 +286,7 @@ A character without transformations:
 | Vegeta | 1, 2, 4, 5, 6.5 | Skips phase 3, uses decimals |
 | Broly | 4 | Single transformation |
 | Beerus | (none) | No transformations |
-| Cell | (none) | No transformations |
+| GokuAF | 1-10 (phase 100 = ssj10) | 10 transformations, demonstrates infinite phases |
 
 ### `base color` Field (Optional)
 

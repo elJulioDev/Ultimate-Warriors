@@ -46,7 +46,7 @@ Un juego de peleas 2D completo construido enteramente en PowerPoint usando VBA. 
 - Sistema de retroceso con estados de golpe crítico
 
 ### Sistema de Transformaciones
-- Hasta 6 fases normales + 1 fase de truco por personaje
+- Transformaciones infinitas (no limitado a 6 fases)
 - Escalado dinámico de estadísticas por fase (velocidad, daño, defensa)
 - Modos Kaioken con multiplicador configurable y drenaje de vida
 - Efectos visuales: auras, brillos y animaciones de transformación
@@ -260,20 +260,16 @@ Las transformaciones se activan con combinaciones de teclas y consumen niveles d
 
 #### Estructura de Fases
 
-Cada personaje puede tener hasta 6 fases normales + 1 fase de truco:
+El motor soporta **transformaciones infinitas** — no limitado a 6 o 7 fases. La forma cheat (MUI, UE, BLACK, SSFP) se convierte en la forma final de la cadena de transformación.
 
 ```
 Fase 0: Estado base
 Fase 1: Primera transformación (ej. SSJ)
 Fase 2: Segunda transformación (ej. SSJ2)
-Fase 3: Tercera transformación (ej. SSJ3)
-Fase 4: Cuarta transformación (ej. God)
-Fase 5: Quinta transformación (ej. Blue)
-Fase 6: Sexta transformación (ej. UI)
-Fase 7: Forma de truco (MUI, UE, BLACK o SSFP)
+Fase N: Cualquier número de fase (incluyendo decimales como 6.5)
 ```
 
-#### Ejemplo: Goku
+#### Ejemplo: Goku (6 fases)
 
 ```
 Fase 0: normal
@@ -283,10 +279,10 @@ Fase 3: ssj3
 Fase 4: god
 Fase 5: blue
 Fase 6: ui
-Fase 7: mui (truco)
+Fase 7: mui (truco/maxform)
 ```
 
-#### Ejemplo: Vegeta
+#### Ejemplo: Vegeta (fases decimales)
 
 ```
 Fase 0: normal
@@ -295,11 +291,11 @@ Fase 2: ssj2
 Fase 4: god
 Fase 5: blue
 Fase 6.5: blue_ev
-Fase 7.5: ue (truco)
+Fase 7.5: ue (truco/maxform)
 ```
 
 > [!NOTE]
-> Vegeta usa fases 6.5 y 7.5 porque salta la fase 3. El sistema soporta fases decimales.
+> Vegeta usa fases 6.5 y 7.5 porque salta la fase 3. El sistema soporta fases decimales y transformaciones infinitas.
 
 #### Combinaciones de Teclas para Transformación
 

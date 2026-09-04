@@ -273,19 +273,20 @@ Un personaje sin transformaciones:
 
 - **`eneable`** (Boolean, obligatorio): Activa/desactiva el sistema de transformaciones
 - **`phase N`** (String): Nombre de la subcarpeta para cada fase de transformación
-- **Las fases van de 1 a 7** (fase 7 = forma cheat)
-- **Se pueden saltar fases** — Vegeta usa phase 1, 2, 4, 5, 6,5 (sin phase 3)
-- **Soporta decimales** — `"phase 6,5": "blue_ev"` funciona
+- **Transformaciones infinitas** — El motor soporta fases ilimitadas (no limitado a 6 o 7)
+- **Se pueden saltar fases** — Vegeta usa phase 1, 2, 4, 5, 6.5 (sin phase 3)
+- **Soporta decimales** — `"phase 6.5": "blue_ev"` funciona
+- **Maxform (cheat)** — La forma cheat (MUI, UE, BLACK, SSFP) se convierte en la forma final de la cadena
 
-**Ejemplos de uso:**
+**Ejemplos:**
 
 | Personaje | Fases | Notas |
 |-----------|-------|-------|
 | Goku | 1-6 | Transformaciones secuenciales |
-| Vegeta | 1, 2, 4, 5, 6,5 | Salta phase 3, usa decimales |
+| Vegeta | 1, 2, 4, 5, 6.5 | Salta phase 3, usa decimales |
 | Broly | 4 | Solo una transformación |
 | Beerus | (ninguna) | Sin transformaciones |
-| Cell | (ninguna) | Sin transformaciones |
+| GokuAF | 1-10 (phase 100 = ssj10) | 10 transformaciones, demuestra fases infinitas |
 
 ### Campo `base color` (Opcional)
 

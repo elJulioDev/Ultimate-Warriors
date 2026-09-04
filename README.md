@@ -46,7 +46,7 @@ A full-featured 2D fighting game built entirely in PowerPoint using VBA. Complet
 - Knockback system with critical hit states
 
 ### Transformation System
-- Up to 6 normal phases + 1 cheat phase per character
+- Infinite transformations (not limited to 6 phases)
 - Dynamic stat scaling per phase (speed, damage, defense)
 - Kaioken modes with configurable multiplier and life drain
 - Visual effects: auras, glows, and transformation animations
@@ -260,20 +260,16 @@ Transformations are activated with key combinations and consume Ki energy levels
 
 #### Phase Structure
 
-Each character can have up to 6 normal phases + 1 cheat phase:
+The engine supports **infinite transformations** — not limited to 6 or 7 phases. The cheat form (MUI, UE, BLACK, SSFP) becomes the final form in the transformation chain.
 
 ```
 Phase 0: Base state
 Phase 1: First transformation (e.g. SSJ)
 Phase 2: Second transformation (e.g. SSJ2)
-Phase 3: Third transformation (e.g. SSJ3)
-Phase 4: Fourth transformation (e.g. God)
-Phase 5: Fifth transformation (e.g. Blue)
-Phase 6: Sixth transformation (e.g. UI)
-Phase 7: Cheat form (MUI, UE, BLACK, or SSFP)
+Phase N: Any phase number (including decimals like 6.5)
 ```
 
-#### Example: Goku
+#### Example: Goku (6 phases)
 
 ```
 Phase 0: normal
@@ -283,10 +279,10 @@ Phase 3: ssj3
 Phase 4: god
 Phase 5: blue
 Phase 6: ui
-Phase 7: mui (cheat)
+Phase 7: mui (cheat/maxform)
 ```
 
-#### Example: Vegeta
+#### Example: Vegeta (decimal phases)
 
 ```
 Phase 0: normal
@@ -295,11 +291,11 @@ Phase 2: ssj2
 Phase 4: god
 Phase 5: blue
 Phase 6.5: blue_ev
-Phase 7.5: ue (cheat)
+Phase 7.5: ue (cheat/maxform)
 ```
 
 > [!NOTE]
-> Vegeta uses phase 6.5 and 7.5 because it skips phase 3. The system supports decimal phases.
+> Vegeta uses phase 6.5 and 7.5 because it skips phase 3. The system supports decimal phases and infinite transformations.
 
 #### Transformation Key Combinations
 
