@@ -58,7 +58,17 @@ chars/
 
 - **Extension:** `.png`
 - **Background:** Transparent
-- **Resolution:** Consistent across all sprites of the same character (e.g., 200x200px)
+- **Resolution:** Consistent across all sprites of the same character
+
+### Recommended Resolution
+
+| Sprite Type | Minimum | Recommended (no blur) | Base Game |
+|-------------|---------|----------------------|-----------|
+| Normal sprites | 66x75px | 132x150px | 264x300px |
+| Cheat updim sprites | 75x93px | 150x186px | 264x300px |
+
+> [!TIP]
+> Base game characters use 264x300px (4x the minimum). For best quality without blur, use at least 2x the minimum resolution.
 
 ### Sprite Naming
 

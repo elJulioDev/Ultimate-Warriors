@@ -58,7 +58,17 @@ chars/
 
 - **Extensión:** `.png`
 - **Fondo:** Transparente
-- **Resolución:** Consistente entre todos los sprites del mismo personaje (ej: 200x200px)
+- **Resolución:** Consistente entre todos los sprites del mismo personaje
+
+### Resolución Recomendada
+
+| Tipo de Sprite | Mínimo | Recomendado (sin borrosidad) | Juego Base |
+|----------------|--------|------------------------------|------------|
+| Sprites normales | 66x75px | 132x150px | 264x300px |
+| Sprites cheat updim | 75x93px | 150x186px | 264x300px |
+
+> [!TIP]
+> Los personajes del juego base usan 264x300px (4x el mínimo). Para mejor calidad sin borrosidad, usa al menos 2x la resolución mínima.
 
 ### Nomenclatura de Sprites
 
